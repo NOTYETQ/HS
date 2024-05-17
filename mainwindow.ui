@@ -13,7 +13,1585 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QStackedWidget" name="SW_Authentication">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="W_Login">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QFrame" name="F_Login">
+          <property name="maximumSize">
+           <size>
+            <width>700</width>
+            <height>300</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_7">
+           <property name="spacing">
+            <number>25</number>
+           </property>
+           <property name="leftMargin">
+            <number>50</number>
+           </property>
+           <property name="topMargin">
+            <number>50</number>
+           </property>
+           <property name="rightMargin">
+            <number>50</number>
+           </property>
+           <property name="bottomMargin">
+            <number>50</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="L_LoginTitle">
+             <property name="text">
+              <string>Login</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="GL_LoginCredentials">
+             <property name="leftMargin">
+              <number>100</number>
+             </property>
+             <property name="topMargin">
+              <number>10</number>
+             </property>
+             <property name="rightMargin">
+              <number>100</number>
+             </property>
+             <property name="bottomMargin">
+              <number>10</number>
+             </property>
+             <property name="horizontalSpacing">
+              <number>15</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>25</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="L_Login_SSNTitle">
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="text">
+                <string>Social Security Number</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="LE_Login_SSN"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="L_Login_PasswordTitle">
+               <property name="text">
+                <string>Password</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="LE_Login_Password">
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="HL_LoginButtons">
+             <property name="spacing">
+              <number>100</number>
+             </property>
+             <property name="leftMargin">
+              <number>75</number>
+             </property>
+             <property name="rightMargin">
+              <number>75</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="PB_Login_Login">
+               <property name="text">
+                <string>Login</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="PB_Login_SignUp">
+               <property name="text">
+                <string>Sign Up</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="W_UserLoggedInScreen">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <widget class="QFrame" name="W_Header">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="MinimumExpanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <item>
+            <layout class="QVBoxLayout" name="VL_Header_DateTime">
+             <item>
+              <widget class="QLabel" name="L_Header_TimeTitle">
+               <property name="text">
+                <string>Time</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="L_Header_DateTitle">
+               <property name="text">
+                <string>Date</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <spacer name="HS_Header_Left">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QLabel" name="L_Header_CurrentUserTitle">
+             <property name="text">
+              <string>UserName</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="HS_Header_Right">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="VL_Header_Buttons">
+             <item>
+              <widget class="QPushButton" name="PB_Header_Logout">
+               <property name="styleSheet">
+                <string notr="true">#PB_Header_Logout{
+background-color: rgb(255, 35, 105);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Header_Logout:hover {
+    background-color: rgb(255, 7, 40); 
+    box-shadow: 2px 2px 5px rgb(255, 183, 236);
+}</string>
+               </property>
+               <property name="text">
+                <string>Logout</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="PB_Header_EditProfile">
+               <property name="styleSheet">
+                <string notr="true">#PB_Header_EditProfile{
+	background-color: rgb(53, 174, 255);
+    font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+
+}
+
+#PB_Header_EditProfile:hover {
+  background-color: rgb(28, 89, 255); 
+    box-shadow: 2px 2px 5px rgb(255, 183, 236);
+}</string>
+               </property>
+               <property name="text">
+                <string>Edit Profile</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QStackedWidget" name="SW_RoleScreenChanger">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="W_Customer">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QFrame" name="frame">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QStackedWidget" name="SW_Customer_MenuSwitcher">
+              <property name="currentIndex">
+               <number>1</number>
+              </property>
+              <widget class="QWidget" name="W_Customer_Menu">
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QFrame" name="F_Customer_Menu">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <item>
+                    <widget class="QFrame" name="F_Customer_ActiveHurricane">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QFrame" name="F_Customer_CurrentBooking">
+                     <property name="frameShape">
+                      <enum>QFrame::StyledPanel</enum>
+                     </property>
+                     <property name="frameShadow">
+                      <enum>QFrame::Raised</enum>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="HL_Customer_MenuButtonsLayout">
+                     <item>
+                      <widget class="QPushButton" name="PB_Customer_MakeBooking">
+                       <property name="text">
+                        <string>Book</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="PB_Customer_CancelBooking">
+                       <property name="text">
+                        <string>Cancel</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="W_Customer_AddBooking">
+               <layout class="QVBoxLayout" name="verticalLayout_10">
+                <item>
+                 <widget class="QFrame" name="F_Customer_AddBooking">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
+                  </property>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                   <property name="spacing">
+                    <number>15</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>50</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="L_Customer_AddBookingTitle">
+                     <property name="styleSheet">
+                      <string notr="true">#F_Customer_AddBooking{
+background-color: rgb(53, 174, 255);
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>Add Booking</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="L_Customer_RegionTitle">
+                     <property name="text">
+                      <string>Region</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="CB_Customer_Region">
+                     <item>
+                      <property name="text">
+                       <string>Select Region</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="L_Customer_LocationTitle">
+                     <property name="text">
+                      <string>Location</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="CB_Customer_Location">
+                     <item>
+                      <property name="text">
+                       <string>Select Location</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="L_Customer_ShelterTitle">
+                     <property name="text">
+                      <string>Shelter</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QComboBox" name="CB_Customer_Shelter">
+                     <item>
+                      <property name="text">
+                       <string>Select Shelter</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="HL_Customer_CapacityLayout">
+                     <item>
+                      <widget class="QLabel" name="L_Customer_CapacityTitle">
+                       <property name="text">
+                        <string>Remaing Capacity</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="L_Customer_CurrentCapacity">
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QDialogButtonBox" name="BB_Customer_AddBookingConfirmBox">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="W_Worker">
+           <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <item>
+             <widget class="QFrame" name="F_Worker_ScreenChanger">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_11">
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Screen_Bookings">
+                 <property name="text">
+                  <string>Bookings</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Screen_Hurricanes">
+                 <property name="text">
+                  <string>Hurricanes</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Screen_Location">
+                 <property name="text">
+                  <string>Locations</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Screen_Shelters">
+                 <property name="text">
+                  <string>Shelters</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Screen_Users">
+                 <property name="text">
+                  <string>Users</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="F_Workers_TableHeader">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_19">
+               <property name="spacing">
+                <number>10</number>
+               </property>
+               <property name="leftMargin">
+                <number>25</number>
+               </property>
+               <property name="topMargin">
+                <number>25</number>
+               </property>
+               <property name="rightMargin">
+                <number>25</number>
+               </property>
+               <property name="bottomMargin">
+                <number>25</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="L_Workers_TableHeaderTitle">
+                 <property name="text">
+                  <string>Title</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QStackedWidget" name="SW_Workers_Screen">
+                 <property name="currentIndex">
+                  <number>3</number>
+                 </property>
+                 <widget class="QWidget" name="W_Workers_Table">
+                  <layout class="QVBoxLayout" name="verticalLayout_3">
+                   <item>
+                    <widget class="QTableView" name="TV_Workers"/>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="W_Worker_FormBookings">
+                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <property name="spacing">
+                    <number>25</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>50</number>
+                   </property>
+                   <item>
+                    <layout class="QGridLayout" name="GL_Worker_FormBookings">
+                     <property name="leftMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="horizontalSpacing">
+                      <number>20</number>
+                     </property>
+                     <property name="verticalSpacing">
+                      <number>10</number>
+                     </property>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="L_Worker_Bookings_Hurricane">
+                       <property name="text">
+                        <string>Hurricane</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="3">
+                      <widget class="QLabel" name="L_Worker_Bookings_Region">
+                       <property name="text">
+                        <string>Region</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QComboBox" name="CB_Worker_Bookings_Hurricane">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="L_Worker_Bookings_UserSSN">
+                       <property name="text">
+                        <string>User SSN</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="4">
+                      <widget class="QComboBox" name="CB_Worker_Bookings_Region">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="3">
+                      <widget class="QLabel" name="L_Worker_Bookings_Shelter">
+                       <property name="text">
+                        <string>Shelter</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="4">
+                      <widget class="QComboBox" name="CB_Worker_Bookings_Shelter">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="L_Worker_Bookings_Status">
+                       <property name="text">
+                        <string>Status</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QComboBox" name="CB_Worker_Bookings_Status">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Bookings_UserSSN">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="4">
+                      <widget class="QComboBox" name="CB_Worker_Bookings_Location">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="3">
+                      <widget class="QLabel" name="L_Worker_Bookings_Location">
+                       <property name="text">
+                        <string>Location</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="2">
+                      <spacer name="HS_WorkerGrid">
+                       <property name="orientation">
+                        <enum>Qt::Horizontal</enum>
+                       </property>
+                       <property name="sizeType">
+                        <enum>QSizePolicy::Fixed</enum>
+                       </property>
+                       <property name="sizeHint" stdset="0">
+                        <size>
+                         <width>100</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </spacer>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QDialogButtonBox" name="BB_Worker_ConfirmationBookings">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="W_Worker_FormHurricanes">
+                  <layout class="QVBoxLayout" name="verticalLayout_13">
+                   <property name="leftMargin">
+                    <number>100</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>25</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>100</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>25</number>
+                   </property>
+                   <item>
+                    <layout class="QFormLayout" name="FL_Worker_HurricaneForm">
+                     <property name="horizontalSpacing">
+                      <number>20</number>
+                     </property>
+                     <property name="verticalSpacing">
+                      <number>25</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>100</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>50</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>100</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>50</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="L_Worker_Hurricane_Name">
+                       <property name="text">
+                        <string>Name</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Hurricane_Name"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="L_Worker_Hurricane_Category">
+                       <property name="text">
+                        <string>Category</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QComboBox" name="CB_Worker_Hurricane_Category"/>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="L_Worker_Hurricane_Date">
+                       <property name="text">
+                        <string>Date</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QDateEdit" name="DE_Worker_Hurricane_Date"/>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="L_Worker_Hurricane_Flag">
+                       <property name="text">
+                        <string>Flag</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QComboBox" name="CB_Worker_Hurricane_Flag"/>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="L_Worker_Hurricane_Active">
+                       <property name="text">
+                        <string>Active</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QCheckBox" name="CB_Worker_Hurricane_Active">
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QDialogButtonBox" name="BB_Worker_ConfirmationHurricanes">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="W_Worker_FormLocations">
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <item>
+                    <layout class="QFormLayout" name="formLayout">
+                     <property name="leftMargin">
+                      <number>250</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>150</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>250</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>0</number>
+                     </property>
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="L_Workers_Locations_Region">
+                       <property name="text">
+                        <string>Region</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QComboBox" name="CB_Workers_Locations_Region"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="L_Workers_Locations_Location">
+                       <property name="text">
+                        <string>Location</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="LE_Workers_Locations_Location"/>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QDialogButtonBox" name="BB_Workers_locations_ConfirmationLocations">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="W_Worker_FormShelters">
+                  <layout class="QGridLayout" name="gridLayout_2">
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="L_Workers_Shelters_Region">
+                     <property name="text">
+                      <string>Region</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QComboBox" name="CB_Worker_Shelters_Region"/>
+                   </item>
+                   <item row="1" column="3">
+                    <widget class="QLabel" name="L_Workers_Shelters_Latitude">
+                     <property name="text">
+                      <string>Latitude</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="4">
+                    <widget class="QLineEdit" name="LE_Workers_Shelters_Latitude"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="L_Workers_Shelters_Location">
+                     <property name="text">
+                      <string>Location</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QComboBox" name="CB_Worker_Shelters_Location"/>
+                   </item>
+                   <item row="2" column="2">
+                    <spacer name="HS_Workers_FormShelters">
+                     <property name="orientation">
+                      <enum>Qt::Horizontal</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item row="2" column="3">
+                    <widget class="QLabel" name="L_Workers_Shelters_Longitude">
+                     <property name="text">
+                      <string>Longitude</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="4">
+                    <widget class="QLineEdit" name="LE_Workers_Shelters_Longitude"/>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="L_Workers_Shelters_Condition">
+                     <property name="text">
+                      <string>Condition</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QComboBox" name="CB_Worker_Shelters_Condition"/>
+                   </item>
+                   <item row="3" column="3">
+                    <widget class="QLabel" name="L_Workers_Shelters_Capacity">
+                     <property name="text">
+                      <string>Capacity</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="4">
+                    <widget class="QSpinBox" name="SB_Workers_Shelters_Capacity"/>
+                   </item>
+                   <item row="4" column="0" colspan="5">
+                    <widget class="QDialogButtonBox" name="BB_Worker_ConfirmationShelters">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="4">
+                    <widget class="QLineEdit" name="LE_Workers_Shelters_Name"/>
+                   </item>
+                   <item row="0" column="3">
+                    <widget class="QLabel" name="L_Workers_Shelters_Name">
+                     <property name="text">
+                      <string>Name</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                 <widget class="QWidget" name="W_Worker_FormUsers">
+                  <layout class="QVBoxLayout" name="verticalLayout_15">
+                   <item>
+                    <layout class="QFormLayout" name="FL_Workers_FormUsers">
+                     <item row="0" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_SSN">
+                       <property name="text">
+                        <string>Social Security Number</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="0" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_SSN"/>
+                     </item>
+                     <item row="1" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_FName">
+                       <property name="text">
+                        <string>First Name</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="1" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_FName"/>
+                     </item>
+                     <item row="2" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_LName">
+                       <property name="text">
+                        <string>Last Name</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_LName"/>
+                     </item>
+                     <item row="3" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_Address">
+                       <property name="text">
+                        <string>Address</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="3" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_Address"/>
+                     </item>
+                     <item row="4" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_ContactNumber">
+                       <property name="text">
+                        <string>Contact Number</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="4" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_CpntactNumber"/>
+                     </item>
+                     <item row="5" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_Role">
+                       <property name="text">
+                        <string>Role</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="5" column="1">
+                      <widget class="QComboBox" name="CB_Workers_Users_Role"/>
+                     </item>
+                     <item row="6" column="0">
+                      <widget class="QLabel" name="L_Worker_Users_Password">
+                       <property name="text">
+                        <string>Password</string>
+                       </property>
+                       <property name="alignment">
+                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="6" column="1">
+                      <widget class="QLineEdit" name="LE_Worker_Users_Password">
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="echoMode">
+                        <enum>QLineEdit::Password</enum>
+                       </property>
+                       <property name="clearButtonEnabled">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QDialogButtonBox" name="BB_Worker_ConfirmationUsers">
+                     <property name="standardButtons">
+                      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+                     </property>
+                     <property name="centerButtons">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item>
+             <widget class="QFrame" name="F_Workers_MenuItems">
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_12">
+               <item>
+                <widget class="QPushButton" name="PB_Workers_View">
+                 <property name="text">
+                  <string>View</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Add">
+                 <property name="text">
+                  <string>Add</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Edit">
+                 <property name="text">
+                  <string>Edit</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QPushButton" name="PB_Workers_Delete">
+                 <property name="text">
+                  <string>Delete</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+          <widget class="QWidget" name="W_EditProfile">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QFrame" name="F_EditProfile">
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>500</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <widget class="QLabel" name="L_EditProfile_Title">
+                 <property name="text">
+                  <string>Edit Profile</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="HL_EditProfileInputs">
+                 <item>
+                  <layout class="QFormLayout" name="HL_EditProfileItems">
+                   <property name="horizontalSpacing">
+                    <number>50</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>20</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="L_EditProfile_FNameTitle">
+                     <property name="text">
+                      <string>First Name</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_FName"/>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="L_EditProfile_LNameTitle">
+                     <property name="text">
+                      <string>Last Name</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_LName"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="L_EditProfile_AddressTitle">
+                     <property name="text">
+                      <string>Address</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_Address"/>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="L_EditProfile_ContactNumberTitle">
+                     <property name="text">
+                      <string>Contact Number</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_ContactNumber"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QFormLayout" name="HL_EditProfilePasswords">
+                   <property name="horizontalSpacing">
+                    <number>10</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>20</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="L_EditProfile_NewPasswordTitle">
+                     <property name="text">
+                      <string>New Password</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_NewPassword"/>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="L_EditProfile_NewPasswordConfirmTitle">
+                     <property name="text">
+                      <string>Confirm Password</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_NewPasswordConfirm"/>
+                   </item>
+                   <item row="2" column="0" colspan="2">
+                    <widget class="QPushButton" name="PB_EditProfile_ChangePassword">
+                     <property name="text">
+                      <string>Change Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="HL_EditProfileButtons">
+                 <property name="spacing">
+                  <number>100</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>75</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>75</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="PB_UR_EP_Okay">
+                   <property name="text">
+                    <string>Okay</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="PB_UR_EP_Cancel">
+                   <property name="text">
+                    <string>Cancel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="W_SignUp">
+       <layout class="QHBoxLayout" name="horizontalLayout_5">
+        <item>
+         <widget class="QFrame" name="F_SignUp">
+          <property name="maximumSize">
+           <size>
+            <width>700</width>
+            <height>500</height>
+           </size>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_8">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <property name="leftMargin">
+            <number>50</number>
+           </property>
+           <property name="topMargin">
+            <number>50</number>
+           </property>
+           <property name="rightMargin">
+            <number>50</number>
+           </property>
+           <property name="bottomMargin">
+            <number>50</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="F_SignUpTitle">
+             <property name="text">
+              <string>Sign Up</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QFormLayout" name="FL_SignUpInputs">
+             <property name="horizontalSpacing">
+              <number>10</number>
+             </property>
+             <property name="verticalSpacing">
+              <number>15</number>
+             </property>
+             <property name="leftMargin">
+              <number>100</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>100</number>
+             </property>
+             <item row="0" column="0">
+              <widget class="QLabel" name="L_SignUp_SSNTitle">
+               <property name="text">
+                <string>Social Security Number</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_SSN"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="L_SignUp_FName">
+               <property name="text">
+                <string>First Name</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_FName"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="L_SignUp_LName">
+               <property name="text">
+                <string>Last Name</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_LName"/>
+             </item>
+             <item row="3" column="0">
+              <widget class="QLabel" name="L_SignUp_AddressTitle">
+               <property name="text">
+                <string>Address</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_Address"/>
+             </item>
+             <item row="4" column="0">
+              <widget class="QLabel" name="L_SignUp_ContactNumber">
+               <property name="text">
+                <string>Contact Number</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="4" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_ContactNumber"/>
+             </item>
+             <item row="5" column="0">
+              <widget class="QLabel" name="L_SignUp_PasswordTitle">
+               <property name="text">
+                <string>Password</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="5" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_Password">
+               <property name="inputMethodHints">
+                <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+               <property name="clearButtonEnabled">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="0">
+              <widget class="QLabel" name="L_SignUp_PasswordConfirmTitle">
+               <property name="text">
+                <string>Confirm Password</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="6" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_PasswordConfirm">
+               <property name="inputMethodHints">
+                <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+               </property>
+               <property name="echoMode">
+                <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="HL_SignUpButtons">
+             <property name="spacing">
+              <number>100</number>
+             </property>
+             <property name="leftMargin">
+              <number>75</number>
+             </property>
+             <property name="rightMargin">
+              <number>75</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="PB_SignUp_Confirm">
+               <property name="text">
+                <string>Confirm</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="PB_SignUp_Cancel">
+               <property name="text">
+                <string>Cancel</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
