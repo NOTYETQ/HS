@@ -58,3 +58,8 @@ also handle the comboboxes i done send the code for this previously find it
 
 remember shelters depends on locations and locations depends regions
 disable shelters and locatiosn until region is selected for that set of comboboxes;
+
+
+use the connect() function to connect signals 
+
+try avoid using the default slots 
