@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1008</width>
+    <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -289,7 +289,7 @@ border-radius: 5px;
         <item>
          <widget class="QStackedWidget" name="SW_RoleScreenChanger">
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="W_Customer">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -1597,7 +1597,7 @@ background-color: rgb(53, 174, 255);
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1008</width>
      <height>25</height>
     </rect>
    </property>
