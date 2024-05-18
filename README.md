@@ -62,4 +62,23 @@ disable shelters and locatiosn until region is selected for that set of combobox
 
 use the connect() function to connect signals 
 
-try avoid using the default slots 
+try avoid using the default slots  or repeated values
+
+add an environment variable or a member function named hurricane active and other true false to test where the functiosn will go
+
+
+Make it so that the if a customer has a booking it wont show the makebooking button and if the customer does not have one it will show the booking button but not the cancel button
+
+also add the files hurricaneflags to show that when a hurricane is active what flag it has
+
+also in the frames hurricane details and booking details
+show the details of the shelter with QLabels
+also add images where deemed necessary
+make the fricking ui look pretty
+add translations to 3 languages
+add menu items
+add button to see users previous queries
+
+if something needs a query tell me so i add it in the base classes
+
+
