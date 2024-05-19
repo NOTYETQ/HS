@@ -1,9 +1,9 @@
 #ifndef HURRICANES_H
 #define HURRICANES_H
+
 #include "entity.h"
-#include <QDate>
-s
-class Hurricanes
+
+class Hurricanes : public Entity
 {
 public:
     Hurricanes();
@@ -14,19 +14,22 @@ public:
     void setCategory(int category);
     void setHurricaneDate(const QString &hurricanedate);
     void setFlag(const QString &flag);
+    void setActive(bool active);
 
     int getHurricane_ID() const;
     QString getHurricane() const;
     int getCategory() const;
-    QDate getHurricaneDate() const;
+    QString getHurricaneDate() const;
     QString getFlag() const;
+    bool getActive() const;
 
 private:
     int Hurricane_ID;
     QString Hurricane;
     int Category;
-    QDate HurricaneDate;
+    QString HurricaneDate;
     QString Flag;
+    bool Active;
 };
 
 #endif // HURRICANES_H
