@@ -11,6 +11,7 @@ CONFIG += c++17
 SOURCES += \
     bookings.cpp \
     bookingscrud.cpp \
+    databasemanager.cpp \
     entity.cpp \
     entitycrud.cpp \
     hurricanes.cpp \
@@ -28,6 +29,7 @@ HEADERS += \
     Errors.h \
     bookings.h \
     bookingscrud.h \
+    databasemanager.h \
     entity.h \
     entitycrud.h \
     hurricanes.h \
