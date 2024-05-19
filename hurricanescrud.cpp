@@ -11,7 +11,7 @@ bool HurricanesCRUD::add(const Entity &entity){
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
         if (!hurricanes) {
-            throw std::exception ("Invalid Object");
+            throw std::runtime_error (std::string("Invalid Object"));
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -39,8 +39,8 @@ bool HurricanesCRUD::add(const Entity &entity){
 bool HurricanesCRUD::edit(const Entity &entity) {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
-        if (!Hurricanes) {
-            throw std::exception ("Invalid Object");
+        if (!hurricanes) {
+            throw std::exception ();
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -68,8 +68,8 @@ bool HurricanesCRUD::edit(const Entity &entity) {
 bool HurricanesCRUD::delete_(const Entity &entity) {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
-        if (!Hurricanes) {
-            throw std::exception ("Invalid Object");
+        if (!hurricanes) {
+            throw std::exception (std::string("Invalid Object"));
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -93,8 +93,8 @@ bool HurricanesCRUD::delete_(const Entity &entity) {
 bool HurricanesCRUD::view(const Entity &entity, Entity &newentity) const {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
-        if (!Hurricanes) {
-            throw std::exception ("Invalid Object");
+        if (!hurricanes) {
+            throw std::exception (std::string("Invalid Object"));
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -125,29 +125,47 @@ bool HurricanesCRUD::view(const Entity &entity, Entity &newentity) const {
     }
 }
 
-QString HurricanesCRUD::viewTable() {
-
+QString HurricanesCRUD::buildDeleteCommand() const {
+    QString queryStr = "DELETE FROM Hurricanes WHERE Hurricane_ID = :hurricaneID";
+    return queryStr;
 }
 
-QString HurricanesCRUD::buildDeleteCommand() {
-
+QString HurricanesCRUD::buildInsertCommand() const {
+    QString queryStr = "INSERT INTO Hurricanes (Hurricane, Category, HurricaneDate, Flag, Active) "
+                      "VALUES (:hurricane, :category, :date, :flag, :active)";
+    return queryStr;
 }
 
-QString HurricanesCRUD::buildInsertCommand() {
-
-}
-QString HurricanesCRUD::buildSelectCommand() {
-
-}
-
-QString HurricanesCRUD::buildUpdateCommand() {
-
-}
-
-QString HurricanesCRUD::buildViewTableCommand() {
-
+QString HurricanesCRUD::buildSelectCommand() const {
+    QString queryStr = "SELECT "
+                       "h.Hurricane_ID, "
+                       "h.Hurricane, "
+                       "h.Category"
+                       "f.Flag, "
+                       "h.HurricaneDate, "
+                       "h.Active "
+                       "FROM Hurricanes h "
+                       "JOIN Flags f ON h.Flag = f.Flag_ID";
+    return queryStr;
 }
 
-QString HurricanesCRUD::getTableName() {
+QString HurricanesCRUD::buildUpdateCommand() const {
+    QString queryStr = "UPDATE Hurricanes "
+                       "SET "
+                       "Hurricane = :hurricane, "
+                       "Category = :category, "
+                       "Flag = :flag, "
+                       "HurricaneDate = :date, "
+                       "Active = :status "
+                       "WHERE Hurricane_ID = :hurricane_ID";
+    return queryStr;
+}
+
+QString HurricanesCRUD::buildViewTableCommand() const {
+    QString queryStr = "DELETE FROM Shelters WHERE Shelter_ID = :shelter_id";
+    return queryStr;
+}
+
+QString HurricanesCRUD::getTableName() const {
     return "Hurricanes";
 }

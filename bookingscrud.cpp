@@ -15,23 +15,32 @@ BookingsCRUD::~BookingsCRUD(){
 // uses the buildInsertCommand()
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 bool BookingsCRUD::add(const Entity& entity) {
-    const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
-    if (!bookings) {
-        return false; // Handle casting error
-    }
-    QSqlQuery query;
-    query.prepare(buildInsertCommand());
-    query.bindValue(":hurricane_id", bookings->getHurricane());
-    query.bindValue(":user_id", bookings->getUserSSN());
-    query.bindValue(":status_id", bookings->getStatus());
-    query.bindValue(":shelter_id", bookings->getShelter());
-    if (!query.exec()) {
-        throw std::runtime_error("Failed to fetch data from the database: ." + query.lastError().text().toStdString());
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception (std::string("Invalid Object"));
+        }
+        QSqlQuery query;
+        query.prepare(buildInsertCommand());
+        query.bindValue(":hurricane_id", bookings->getHurricane());
+        query.bindValue(":user_id", bookings->getUserSSN());
+        query.bindValue(":status_id", bookings->getStatus());
+        query.bindValue(":shelter_id", bookings->getShelter());
+
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+
+        qDebug("Success");
+        return true;
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
         return false;
     }
 
-    qDebug() << "Add Sucess.";
-    return true;
 }
 
 // ------------------------------------------------------------------------------------------------------------------------------------------------
@@ -42,24 +51,33 @@ bool BookingsCRUD::add(const Entity& entity) {
 // uses the buildUpdateCommand()
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 bool BookingsCRUD::edit(const Entity& entity) {
-    const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
-    if (!bookings) {
-        return false; // Handle casting error
-    }
-    QSqlQuery query;
-    query.prepare(buildUpdateCommand());
-    query.bindValue(":booking_id", bookings->getBooking_ID());
-    query.bindValue(":hurricane_id", bookings->getHurricane());
-    query.bindValue(":user_id", bookings->getUserSSN());
-    query.bindValue(":status_id", bookings->getStatus());
-    query.bindValue(":shelter_id", bookings->getShelter());
-    if (!query.exec()) {
-        throw std::runtime_error("Failed to fetch data from the database: ." + query.lastError().text().toStdString());
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+        QSqlQuery query;
+        query.prepare(buildUpdateCommand());
+        query.bindValue(":booking_id", bookings->getBooking_ID());
+        query.bindValue(":hurricane_id", bookings->getHurricane());
+        query.bindValue(":user_id", bookings->getUserSSN());
+        query.bindValue(":status_id", bookings->getStatus());
+        query.bindValue(":shelter_id", bookings->getShelter());
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+
+        qDebug("Success");
+
+        return true;
+
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
         return false;
     }
-
-    qDebug() << "Edit Sucess.";
-    return true;
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 // CRUD Delete FUNCTION
@@ -69,19 +87,26 @@ bool BookingsCRUD::edit(const Entity& entity) {
 // uses the buildDeleteCommand()
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 bool BookingsCRUD::delete_(const Entity& entity) {
-    const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
-    if (!bookings) {
-        return false; // Handle casting error
-    }
-    QSqlQuery query;
-    query.prepare(buildDeleteCommand());
-    query.bindValue(":booking_id", bookings->getBooking_ID());
-    if (!query.exec()) {
-        throw std::runtime_error("Failed to fetch data from the database: ." + query.lastError().text().toStdString());
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+        QSqlQuery query;
+        query.prepare(buildDeleteCommand());
+        query.bindValue(":booking_id", bookings->getBooking_ID());
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+        qDebug() << "Delete Sucess.";
+        return true;
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
         return false;
     }
-    qDebug() << "Delete Sucess.";
-    return true;
 }
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 // CRUD View FUNCTION
@@ -92,45 +117,47 @@ bool BookingsCRUD::delete_(const Entity& entity) {
 // uses the buildViewCommand()
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 bool BookingsCRUD::view(const Entity& entity, Entity& newentity) const {
-    const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
-    if (!bookings) {
-        // Handle casting error (e.g., qDebug() << "Invalid entity type")
-        return false;
-    }
-
-    QSqlQuery query;
     try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+
+        QSqlQuery query;
         query.prepare(buildSelectCommand());
         query.bindValue(":booking_id", bookings->getBooking_ID());
 
         if (!query.exec()) {
-            throw QSqlError(query.lastError()); // Re-throw QSqlError for detailed error handling
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
         }
+        qDebug("Query Success");
 
         if (!query.next()) {
-            qDebug() << "Booking not found.";
-            return false;
+            throw std::exception("Booking Not Found");
         }
 
         // Cast newentity to Bookings* (assuming it's valid) and populate using setters
         Bookings* mutableBooking = dynamic_cast<Bookings*>(&newentity);
         if (!mutableBooking) {
-            // Handle casting error (e.g., qDebug() << "Unexpected newentity type")
-            return false;
+            throw std::exception ("Invalid Object");
         }
 
         mutableBooking->setHurricane(query.value("Hurricane").toString());
         mutableBooking->setUserSSN(query.value("SSN").toString());
         mutableBooking->setShelter(query.value("Shelter").toString());
         mutableBooking->setStatus(query.value("Status").toString());
-        mutableBooking->setBooking_Date_Time(query.value("Booking_Date_Time").toDateTime().toString("hh:mm:ss | dd-MM-yyyy"));
-        mutableBooking->setBooking_ID(query.value("Booking_ID").toInt());
+        mutableBooking->setBooking_Date_Time(query.value("Booking_Date_Time").toString());
+        mutableBooking->setBooking_ID(query.value("Booking_ID").toInt();
         return true;
-    } catch (const QSqlError& error) {
-        qDebug() << "Error in BookingsCRUD::view:" << error.text();
+
+    }  catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
         return false;
     }
-    return true;
+
 }
 
 QString BookingsCRUD::getTableName() const{

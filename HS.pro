@@ -20,6 +20,7 @@ SOURCES += \
     locationscrud.cpp \
     main.cpp \
     mainwindow.cpp \
+    session.cpp \
     shelters.cpp \
     shelterscrud.cpp \
     users.cpp \
@@ -37,6 +38,7 @@ HEADERS += \
     locations.h \
     locationscrud.h \
     mainwindow.h \
+    session.h \
     shelters.h \
     shelterscrud.h \
     users.h \

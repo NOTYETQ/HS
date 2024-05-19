@@ -13,12 +13,25 @@ int main(int argc, char *argv[])
 
     DatabaseManager db;
     db.openDatabase();
+
+
+
+
+
     Bookings b;
     b.setHurricane("1");
     b.setShelter("1");
     b.setUserSSN("1");
     b.setStatus("1");
+
+
+
     BookingsCRUD bookingsCRUD;
+
+    SheltersCRUD sheltersCRUD)
+
+
+
     try {
         if (bookingsCRUD.add(b)) {
             qDebug() << "Booking added successfully.";
@@ -30,6 +43,8 @@ int main(int argc, char *argv[])
     }
     Bookings b1;
     b1.setBooking_ID(1);
+
+    
     if (bookingsCRUD.view(b1, b1)) {
         qDebug() << "Booking details:";
         qDebug() << "  Hurricane:  " << b1.getHurricane();
@@ -40,6 +55,8 @@ int main(int argc, char *argv[])
     } else {
         qDebug() << "Booking with ID " << b1.getBooking_ID() << " not found.";
     }
+
+
     Bookings b3;
     b3.setBooking_ID(7);
     b3.setHurricane("2");
@@ -56,7 +73,7 @@ int main(int argc, char *argv[])
         qDebug() << "Database error: " << e.what();
     }
     try {
-        if (bookingsCRUD.edit(b3)) {
+        if (bookingsCRUD.delete(b3)) {
             qDebug() << "Booking deleted successfully.";
         } else {
             qDebug() << "Error deleted booking.";

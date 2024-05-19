@@ -7,6 +7,7 @@
 class SheltersCRUD : public EntityCRUD {
 public:
     SheltersCRUD();
+    ~SheltersCRUD();
     virtual bool add(const Entity& entity) override;
     virtual bool edit(const Entity& entity) override;
     virtual bool delete_(const Entity& entity) override;
