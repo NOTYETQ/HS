@@ -2,7 +2,7 @@
 
 Shelters::Shelters() {}
 
-Shelters::!Shelters(){}
+Shelters::~Shelters(){}
 
 void Shelters::setShelter_ID(int shelter_id){
     Shelter_ID = shelter_id;

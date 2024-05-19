@@ -1,26 +1,24 @@
 #ifndef USERS_H
 #define USERS_H
+
 #include "entity.h"
 
-class Users
-{
+class Users : public Entity {
 public:
     Users();
     ~Users();
-    
-    // setters
-    int setUser_ID(int user_id);
-    QString setSSN(const QString &ssn);
-    QString setRole(const QString &role);
-    QString setFirst_Name(const QString &first_name);
-    QString setMiddle_Name(const QString &middle_name);
-    QString setLast_Name(const QString &last_name);
-    QString setAddress(const QString &address);
-    QString setContact_Number(const QString &contact_number);
-    bool setBlocked(bool blocked);
-    QString setPassword(const QString &password);
 
-    // getters
+    void setUser_ID(int user_id);
+    void setSSN(const QString &ssn);
+    void setRole(const QString &role);
+    void setFirst_Name(const QString &first_name);
+    void setMiddle_Name(const QString &middle_name);
+    void setLast_Name(const QString &last_name);
+    void setAddress(const QString &address);
+    void setContact_Number(const QString &contact_number);
+    void setBlocked(bool blocked);
+    void setPassword(const QString &password);
+
     int getUser_ID() const;
     QString getSSN() const;
     QString getRole() const;

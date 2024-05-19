@@ -3,8 +3,7 @@
 
 #include "entity.h"
 
-class Shelters
-{
+class Shelters : public Entity {
 public:
     Shelters();
     ~Shelters();
@@ -28,6 +27,7 @@ public:
     QString getLongitude() const;
     int getCapacity() const;
     int getRemainingCapacity() const;
+
 private:
     int Shelter_ID;
     QString Shelter;
