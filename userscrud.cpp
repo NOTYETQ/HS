@@ -1,7 +1,7 @@
 #include "userscrud.h"
 
 UsersCRUD::UsersCRUD() {
-    setRole(Role::None);
+    setRole("None");
     qDebug("UsersCRUD Constructed");
     getRole();
 }
@@ -13,7 +13,7 @@ bool UsersCRUD::add(const Entity &entity){
     try {
         const Users* users = dynamic_cast<const Users*>(&entity);
         if (!users) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
 
         if (userExists(users->getSSN())) {
@@ -50,7 +50,7 @@ bool UsersCRUD::edit(const Entity &entity) {
     try {
         const Users* users = dynamic_cast<const Users*>(&entity);
         if (!users) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -69,11 +69,17 @@ bool UsersCRUD::edit(const Entity &entity) {
         }
         qDebug("Success");
         return true;
-    } catch (std::runtime_error) {
-        throw;
+    }
+    catch (DatabaseException e) {
+        throw e;
         return false;
-    } catch (std::exception) {
-        throw;
+    }
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -82,7 +88,7 @@ bool UsersCRUD::delete_(const Entity &entity) {
     try {
         const Users* users = dynamic_cast<const Users*>(&entity);
         if (!users) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -93,12 +99,16 @@ bool UsersCRUD::delete_(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -107,7 +117,7 @@ bool UsersCRUD::view(const Entity &entity, Entity &newentity) const {
     try {
         const Users* users = dynamic_cast<const Users*>(&entity);
         if (!users) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -122,7 +132,7 @@ bool UsersCRUD::view(const Entity &entity, Entity &newentity) const {
 
         Users* mutableUser = dynamic_cast<Users*>(&newentity);
         if (!mutableUser) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         mutableUser->setAddress(query.value("Address").toString());
         mutableUser->setBlocked(query.value("Blocked").toBool());
@@ -138,12 +148,16 @@ bool UsersCRUD::view(const Entity &entity, Entity &newentity) const {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -201,7 +215,7 @@ QString UsersCRUD::buildUpdateCommand() const {
     return queryStr;
 }
 
-QString UsersCRUD::buildSelectCommand() {
+QString UsersCRUD::buildSelectCommand() const{
     QString querystr = "SELECT User_ID, SSN, Role, First_Name, MiddleName, Last_Name, Address, Contact_Number, Blocked, Password WHERE User_ID = :user_id";
     return querystr;
 }
@@ -232,7 +246,7 @@ QString UsersCRUD::buildViewTableCommand() const {
     return queryStr;
 }
 
-QString UsersCRUD::getTableName() {
+QString UsersCRUD::getTableName() const{
     return "Users";
 }
 

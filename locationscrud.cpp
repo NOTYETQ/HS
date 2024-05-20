@@ -1,7 +1,6 @@
 #include "locationscrud.h"
 
 LocationsCRUD::LocationsCRUD() {
-    setRole(Role::None);
     qDebug("LocationsCRUD Constructed");
     getRole();
 }
@@ -18,7 +17,7 @@ bool LocationsCRUD::add(const Entity &entity){
 
         const Locations* locations = dynamic_cast<const Locations*>(&entity);
         if (!locations) {
-            throw std::runtime_error (QString("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -31,12 +30,16 @@ bool LocationsCRUD::add(const Entity &entity){
         qDebug("Success");
         return true;
     }
+    catch (DatabaseException e) {
+        throw e;
+        return false;
+    }
     catch (std::runtime_error e) {
-        throw;
+        throw e;
         return false;
     }
     catch (std::exception e) {
-        throw;
+        throw e ;
         return false;
     }
 }
@@ -50,7 +53,7 @@ bool LocationsCRUD::edit(const Entity &entity) {
 
         const Locations* locations = dynamic_cast<const Locations*>(&entity);
         if (!locations) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -63,12 +66,16 @@ bool LocationsCRUD::edit(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -82,7 +89,7 @@ bool LocationsCRUD::delete_(const Entity &entity) {
 
         const Locations* locations = dynamic_cast<const Locations*>(&entity);
         if (!locations) {
-            throw std::exception (QString("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -93,12 +100,16 @@ bool LocationsCRUD::delete_(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -112,7 +123,7 @@ bool LocationsCRUD::view(const Entity &entity, Entity &newentity) const {
 
         const Locations* locations = dynamic_cast<const Locations*>(&entity);
         if (!locations) {
-            throw std::exception (QString("Invalid Object"));
+            throw DatabaseException("Invalid object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -126,19 +137,23 @@ bool LocationsCRUD::view(const Entity &entity, Entity &newentity) const {
 
         Locations* mutableLocation = dynamic_cast<Locations*>(&newentity);
         if (!mutableLocation) {
-            throw std::exception (QString("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         // setters here
 
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }

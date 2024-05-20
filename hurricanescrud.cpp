@@ -40,7 +40,7 @@ bool HurricanesCRUD::edit(const Entity &entity) {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
         if (!hurricanes) {
-            throw std::exception ();
+            throw DatabaseException("Something Wrong");
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -55,12 +55,16 @@ bool HurricanesCRUD::edit(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -69,7 +73,7 @@ bool HurricanesCRUD::delete_(const Entity &entity) {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
         if (!hurricanes) {
-            throw std::exception (std::string("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -80,12 +84,16 @@ bool HurricanesCRUD::delete_(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -94,7 +102,7 @@ bool HurricanesCRUD::view(const Entity &entity, Entity &newentity) const {
     try {
         const Hurricanes* hurricanes = dynamic_cast<const Hurricanes*>(&entity);
         if (!hurricanes) {
-            throw std::exception (std::string("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -108,19 +116,23 @@ bool HurricanesCRUD::view(const Entity &entity, Entity &newentity) const {
 
         Hurricanes* mutableHurricane = dynamic_cast<Hurricanes*>(&newentity);
         if (!mutableHurricane) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException("Invalid Object");
         }
         // setters here
 
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }

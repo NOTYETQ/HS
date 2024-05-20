@@ -12,7 +12,7 @@ bool Session::Login(const Users& user){
         } else {
             Current_User = user;
             setIsLoggedIn(true);
-            EntityCRUD::setRole();
+            ucrud.setRole(Current_User.getRole());
             qDebug("User Logged In");
             return true;
         }
@@ -31,14 +31,20 @@ bool Session::Logout() {
         if (getIsLoggedIn()) {
             // Clear user information from the Session
             Current_User = Users();
-            EntityCRUD::setRole(0);
+            ucrud.setRole("None");
             setIsLoggedIn(false);
             qDebug("User Logged Out");
         } else {
-            throw std::exception("No User Logged In");
+            throw DatabaseException("No User Logged In");
         }
-    } catch (const std::exception& e) {
+    }
+    catch (DatabaseException e) {
         throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
+        return false;
     }
 }
 bool Session::getIsLoggedIn() {

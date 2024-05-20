@@ -12,10 +12,20 @@ QSqlQueryModel *EntityCRUD::viewTable() {
     }
 }
 
-void EntityCRUD::setRole(int r) {
-    role = r;
+void EntityCRUD::setRole(const QString& roleString) {
+    if (roleString == "None") {
+        role_ = Role::None;
+    } else if (roleString == "Administrator") {
+        role_ = Role::Administrator;
+    } else if (roleString == "Employee") {
+        role_ = Role::Employee;
+    } else if (roleString == "Bookie") {
+        role_ = Role::Bookie;
+    } else {
+        role_ = Role::None;
+    }
 }
 
-EntityCRUD::Role EntityCRUD::getRole() const {
-    return role;
+Role EntityCRUD::getRole() const {
+    return role_;
 }

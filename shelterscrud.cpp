@@ -12,7 +12,7 @@ bool SheltersCRUD::add(const Entity &entity){
     try {
         const Shelters* shelters = dynamic_cast<const Shelters*>(&entity);
         if (!shelters) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -31,12 +31,16 @@ bool SheltersCRUD::add(const Entity &entity){
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -45,7 +49,7 @@ bool SheltersCRUD::edit(const Entity &entity) {
     try {
         const Shelters* shelters = dynamic_cast<const Shelters*>(&entity);
         if (!shelters) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -66,12 +70,16 @@ bool SheltersCRUD::edit(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -80,7 +88,7 @@ bool SheltersCRUD::delete_(const Entity &entity) {
     try {
         const Shelters* shelters = dynamic_cast<const Shelters*>(&entity);
         if (!shelters) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -91,12 +99,16 @@ bool SheltersCRUD::delete_(const Entity &entity) {
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -105,7 +117,7 @@ bool SheltersCRUD::view(const Entity &entity, Entity &newentity) const {
     try {
         const Shelters* shelters = dynamic_cast<const Shelters*>(&entity);
         if (!shelters) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildSelectCommand());
@@ -119,19 +131,23 @@ bool SheltersCRUD::view(const Entity &entity, Entity &newentity) const {
 
         Shelters* mutableLocation = dynamic_cast<Shelters*>(&newentity);
         if (!mutableLocation) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         // setters here
 
         qDebug("Success");
         return true;
     }
-    catch (std::runtime_error) {
-        throw;
+    catch (DatabaseException e) {
+        throw e;
         return false;
     }
-    catch (std::exception) {
-        throw;
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }

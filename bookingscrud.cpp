@@ -18,7 +18,7 @@ bool BookingsCRUD::add(const Entity& entity) {
     try {
         const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
         if (!bookings) {
-            throw std::exception (std::string("Invalid Object"));
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildInsertCommand());
@@ -33,11 +33,17 @@ bool BookingsCRUD::add(const Entity& entity) {
 
         qDebug("Success");
         return true;
-    } catch (std::runtime_error) {
-        throw;
+    }
+    catch (DatabaseException e) {
+        throw e;
         return false;
-    } catch (std::exception) {
-        throw;
+    }
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 
@@ -54,7 +60,7 @@ bool BookingsCRUD::edit(const Entity& entity) {
     try {
         const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
         if (!bookings) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildUpdateCommand());
@@ -71,11 +77,17 @@ bool BookingsCRUD::edit(const Entity& entity) {
 
         return true;
 
-    } catch (std::runtime_error) {
-        throw;
+    }
+    catch (DatabaseException e) {
+        throw e;
         return false;
-    } catch (std::exception) {
-        throw;
+    }
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -90,7 +102,7 @@ bool BookingsCRUD::delete_(const Entity& entity) {
     try {
         const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
         if (!bookings) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
         QSqlQuery query;
         query.prepare(buildDeleteCommand());
@@ -100,11 +112,17 @@ bool BookingsCRUD::delete_(const Entity& entity) {
         }
         qDebug() << "Delete Sucess.";
         return true;
-    } catch (std::runtime_error) {
-        throw;
+    }
+    catch (DatabaseException e) {
+        throw e;
         return false;
-    } catch (std::exception) {
-        throw;
+    }
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 }
@@ -120,7 +138,7 @@ bool BookingsCRUD::view(const Entity& entity, Entity& newentity) const {
     try {
         const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
         if (!bookings) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
 
         QSqlQuery query;
@@ -133,13 +151,13 @@ bool BookingsCRUD::view(const Entity& entity, Entity& newentity) const {
         qDebug("Query Success");
 
         if (!query.next()) {
-            throw std::exception("Booking Not Found");
+            throw DatabaseException("Booking Not Found");
         }
 
         // Cast newentity to Bookings* (assuming it's valid) and populate using setters
         Bookings* mutableBooking = dynamic_cast<Bookings*>(&newentity);
         if (!mutableBooking) {
-            throw std::exception ("Invalid Object");
+            throw DatabaseException ("Invalid Object");
         }
 
         mutableBooking->setHurricane(query.value("Hurricane").toString());
@@ -147,14 +165,20 @@ bool BookingsCRUD::view(const Entity& entity, Entity& newentity) const {
         mutableBooking->setShelter(query.value("Shelter").toString());
         mutableBooking->setStatus(query.value("Status").toString());
         mutableBooking->setBooking_Date_Time(query.value("Booking_Date_Time").toString());
-        mutableBooking->setBooking_ID(query.value("Booking_ID").toInt();
+        mutableBooking->setBooking_ID(query.value("Booking_ID").toInt());
         return true;
 
-    }  catch (std::runtime_error) {
-        throw;
+    }
+    catch (DatabaseException e) {
+        throw e;
         return false;
-    } catch (std::exception) {
-        throw;
+    }
+    catch (std::runtime_error e) {
+        throw e;
+        return false;
+    }
+    catch (std::exception e) {
+        throw e ;
         return false;
     }
 

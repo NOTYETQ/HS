@@ -20,6 +20,7 @@ public:
 
 private:
     Users Current_User;
+    UsersCRUD ucrud;
     bool IsLoggedIn;
 };
 
