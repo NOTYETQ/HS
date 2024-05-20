@@ -1,20 +1,22 @@
 #include "userscrud.h"
 
+// Constructors
 UsersCRUD::UsersCRUD() {
-    setRole("None");
-    qDebug("UsersCRUD Constructed");
-    getRole();
 }
 UsersCRUD::~UsersCRUD() {
-    qDebug("UsersCRUD Deconstructed");
 }
 
+// POST function of Parametrs Entity
 bool UsersCRUD::add(const Entity &entity){
     try {
+        // Since Parameters cannot be changed in pure virtual functiosn meant to be overriden,
+        // Since Users inherits from base class entity, it attempts to convert the derived class to the type of base class
         const Users* users = dynamic_cast<const Users*>(&entity);
+        // If User is not of a valid object, it will throw a error
         if (!users) {
             throw DatabaseException ("Invalid Object");
         }
+        // Checks to see if any parameters are empty
         if (users->getAddress().isEmpty() ||
             users->getContact_Number().isEmpty() || users->getFirst_Name().isEmpty() ||
             users->getLast_Name().isEmpty() || users->getMiddle_Name().isEmpty() ||
@@ -22,9 +24,9 @@ bool UsersCRUD::add(const Entity &entity){
             users->getSSN().isEmpty()) {
             // Handle the case where any of the values are empty
             throw std::invalid_argument("One or more values are empty.");
-            // Or you can return from the function, throw an exception, or handle it in any appropriate way
         }
 
+        // checks if a user exists
         if (userExists(users->getSSN())) {
             throw;
         }

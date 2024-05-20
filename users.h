@@ -3,6 +3,9 @@
 
 #include "entity.h"
 
+// Base Class Users
+// Inherits From Entity
+// The structure of the Users Class in the database
 class Users : public Entity {
 public:
     Users();
