@@ -6,6 +6,8 @@
 class Users : public Entity {
 public:
     Users();
+    Users(int user_id);
+    Users(const QString &ssn, const QString &password);
     ~Users();
 
     void setUser_ID(int user_id);

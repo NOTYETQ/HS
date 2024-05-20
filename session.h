@@ -3,7 +3,6 @@
 
 #include "users.h"
 #include "entitycrud.h"
-#include "userscrud.h"
 
 class Session
 {
@@ -15,12 +14,11 @@ public:
     bool Logout();
     bool getIsLoggedIn();
     bool setIsLoggedIn(bool loggedin);
-    bool verifyCredentials(const QString &ssn, const QString &password);
     Users getCurrent_User();
+    bool verifyCredentials(const Users& loginAttempt, Users& authenticatedUser);
 
 private:
     Users Current_User;
-    UsersCRUD ucrud;
     bool IsLoggedIn;
 };
 

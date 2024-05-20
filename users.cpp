@@ -1,8 +1,56 @@
 #include "users.h"
 
-Users::Users() {}
+Users::Users() {
+    setAddress("");
+    setBlocked("");
+    setContact_Number("");
+    setFirst_Name("");
+    setLast_Name("");
+    setMiddle_Name("");
+    setPassword("");
+    setRole("");
+    setSSN("");
+    setUser_ID(0);
+}
 
-Users::~Users(){}
+Users::Users(int user_id){
+    setUser_ID(user_id);
+    setAddress("");
+    setBlocked("");
+    setContact_Number("");
+    setFirst_Name("");
+    setLast_Name("");
+    setMiddle_Name("");
+    setPassword("");
+    setRole("");
+    setSSN("");
+}
+
+Users::Users(const QString &ssn, const QString &password){
+    setUser_ID(0);
+    setAddress("");
+    setBlocked("");
+    setContact_Number("");
+    setFirst_Name("");
+    setLast_Name("");
+    setMiddle_Name("");
+    setPassword(password);
+    setRole("");
+    setSSN(ssn);
+}
+
+Users::~Users() {
+    setAddress("");
+    setBlocked("");
+    setContact_Number("");
+    setFirst_Name("");
+    setLast_Name("");
+    setMiddle_Name("");
+    setPassword("");
+    setRole("");
+    setSSN("");
+    setUser_ID(-1);
+}
 
 // setters
 void Users::setUser_ID(int user_id){

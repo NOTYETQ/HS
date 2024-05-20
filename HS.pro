@@ -10,6 +10,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    application.cpp \
     bookings.cpp \
     bookingscrud.cpp \
     databasemanager.cpp \
@@ -29,6 +30,7 @@ SOURCES += \
 
 HEADERS += \
     Errors.h \
+    application.h \
     bookings.h \
     bookingscrud.h \
     databasemanager.h \
@@ -46,6 +48,7 @@ HEADERS += \
     userscrud.h
 
 FORMS += \
+    application.ui \
     mainwindow.ui
 
 # Default rules for deployment.

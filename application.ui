@@ -1,25 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>MainWindow</class>
- <widget class="QMainWindow" name="MainWindow">
+ <class>Application</class>
+ <widget class="QMainWindow" name="Application">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1008</width>
+    <width>1280</width>
     <height>724</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <property name="styleSheet">
-   <string notr="true">#MainWindow{
-	background-color: rgb(15, 171, 185);
-}</string>
-  </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_3">
     <item>
      <widget class="QStackedWidget" name="SW_Authentication">
       <property name="currentIndex">
@@ -294,7 +289,7 @@ border-radius: 5px;
         <item>
          <widget class="QStackedWidget" name="SW_RoleScreenChanger">
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="W_Customer">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -311,7 +306,7 @@ border-radius: 5px;
             <item>
              <widget class="QStackedWidget" name="SW_Customer_MenuSwitcher">
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="W_Customer_Menu">
                <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -651,7 +646,7 @@ border-radius: 5px;
                <item>
                 <widget class="QStackedWidget" name="SW_Workers_Screen">
                  <property name="currentIndex">
-                  <number>3</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="W_Workers_Table">
                   <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1622,7 +1617,7 @@ border-radius: 5px;
              <item row="1" column="1">
               <widget class="QLineEdit" name="LE_SignUp_FName"/>
              </item>
-             <item row="2" column="0">
+             <item row="3" column="0">
               <widget class="QLabel" name="L_SignUp_LName">
                <property name="text">
                 <string>Last Name</string>
@@ -1632,10 +1627,10 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="2" column="1">
+             <item row="3" column="1">
               <widget class="QLineEdit" name="LE_SignUp_LName"/>
              </item>
-             <item row="3" column="0">
+             <item row="4" column="0">
               <widget class="QLabel" name="L_SignUp_AddressTitle">
                <property name="text">
                 <string>Address</string>
@@ -1645,10 +1640,10 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="3" column="1">
+             <item row="4" column="1">
               <widget class="QLineEdit" name="LE_SignUp_Address"/>
              </item>
-             <item row="4" column="0">
+             <item row="5" column="0">
               <widget class="QLabel" name="L_SignUp_ContactNumber">
                <property name="text">
                 <string>Contact Number</string>
@@ -1658,10 +1653,10 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="4" column="1">
+             <item row="5" column="1">
               <widget class="QLineEdit" name="LE_SignUp_ContactNumber"/>
              </item>
-             <item row="5" column="0">
+             <item row="6" column="0">
               <widget class="QLabel" name="L_SignUp_PasswordTitle">
                <property name="text">
                 <string>Password</string>
@@ -1671,7 +1666,7 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="5" column="1">
+             <item row="6" column="1">
               <widget class="QLineEdit" name="LE_SignUp_Password">
                <property name="inputMethodHints">
                 <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
@@ -1687,7 +1682,7 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="6" column="0">
+             <item row="7" column="0">
               <widget class="QLabel" name="L_SignUp_PasswordConfirmTitle">
                <property name="text">
                 <string>Confirm Password</string>
@@ -1697,13 +1692,23 @@ border-radius: 5px;
                </property>
               </widget>
              </item>
-             <item row="6" column="1">
+             <item row="7" column="1">
               <widget class="QLineEdit" name="LE_SignUp_PasswordConfirm">
                <property name="inputMethodHints">
                 <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
                </property>
                <property name="echoMode">
                 <enum>QLineEdit::Password</enum>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="LE_SignUp_MName"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="L_SignUp_MName">
+               <property name="text">
+                <string>Middle Name</string>
                </property>
               </widget>
              </item>
@@ -1750,7 +1755,7 @@ border-radius: 5px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1008</width>
+     <width>1280</width>
      <height>25</height>
     </rect>
    </property>

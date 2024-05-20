@@ -3,7 +3,7 @@
 #include <QSqlError>
 
 DatabaseManager::DatabaseManager() {
-
+    openDatabase();
 }
 
 DatabaseManager::~DatabaseManager(){

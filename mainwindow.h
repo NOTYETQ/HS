@@ -12,12 +12,6 @@
 // }
 // QT_END_NAMESPACE
 
-// enum Role {
-//     Admin,
-//     Employee,
-//     Customer
-// };
-
 // enum Category {
 //     Users,
 //     Shelters,
@@ -51,8 +45,8 @@
 //      void on_PB_Workers_Screen_Hurricanes_clicked(); // Slot for "Hurricanes" button click
 //      void on_PB_Workers_Screen_Location_clicked(); // Slot for "Locations" button click
 
-     void on_PB_Login_Login_clicked();
-     void on_PB_Header_Logout_clicked();
+//      void on_PB_Login_Login_clicked();
+//      void on_PB_Header_Logout_clicked();
 
 
 //      void performAction(Category category, Action action); // Declaration of performAction
@@ -67,7 +61,6 @@
 //     void setCurrentTable(int tableIndex); // Function to set the current table index
 //     int getCurrentTable() const; // Function to get the current table index
 //     void refreshTable(Category category); // Function to refresh the table view based on the category
-//     void setupUI(Role role); // Function to set up UI based on the role
 //     void changeWorkerScreen(Category category); // Function to change the worker screen based on the category
 //     void hideAllUI(); // Function to hide all UI elements
 //     void populateComboBox(QComboBox *comboBox, const QString &tableName, const QString &displayColumn, const QString &idColumn); // Helper function to populate combo boxes
