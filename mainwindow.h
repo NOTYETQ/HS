@@ -51,6 +51,9 @@
 //      void on_PB_Workers_Screen_Hurricanes_clicked(); // Slot for "Hurricanes" button click
 //      void on_PB_Workers_Screen_Location_clicked(); // Slot for "Locations" button click
 
+     void on_PB_Login_Login_clicked();
+     void on_PB_Header_Logout_clicked();
+
 
 //      void performAction(Category category, Action action); // Declaration of performAction
 //      void confirmAction(Category category, Action action);
