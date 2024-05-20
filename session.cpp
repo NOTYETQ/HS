@@ -1,7 +1,10 @@
 #include "session.h"
 
-Session::Session() {}
-Session::~Session() {}
+Session::Session() {
+}
+
+Session::~Session() {
+}
 
 bool Session::Login(const Users& loginAttempt) {
     try {

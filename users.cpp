@@ -40,16 +40,6 @@ Users::Users(const QString &ssn, const QString &password){
 }
 
 Users::~Users() {
-    setAddress("");
-    setBlocked("");
-    setContact_Number("");
-    setFirst_Name("");
-    setLast_Name("");
-    setMiddle_Name("");
-    setPassword("");
-    setRole("");
-    setSSN("");
-    setUser_ID(-1);
 }
 
 // setters
