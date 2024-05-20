@@ -227,6 +227,10 @@ QString BookingsCRUD::buildSelectCommand() const {
 // Query to update the current tableview
 // ------------------------------------------------------------------------------------------------------------------------------------------------
 QString BookingsCRUD::buildViewTableCommand() const {
-    return "INSERT INTO Bookings (Hurricane, User, Status, Shelter, Booking_Date_Time) "
-           "VALUES (:hurricane_id, :user, :status_id, :shelter_id, :booking_date_time)";
+    return "SELECT b.Booking_ID, h.Hurricane, u.SSN, s.Status, sh.Shelter, b.Booking_Date_Time "
+           "FROM Bookings b "
+           "JOIN Hurricanes h ON b.Hurricane = h.Hurricane_ID "
+           "JOIN Users u ON b.User = u.User_ID "
+           "JOIN Status s ON b.Status = s.Status_ID "
+           "JOIN Shelters sh ON b.Shelter = sh.Shelter_ID ";
 }

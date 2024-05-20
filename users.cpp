@@ -1,41 +1,41 @@
 #include "users.h"
 
 Users::Users() {
-    setAddress("");
-    setBlocked("");
-    setContact_Number("");
-    setFirst_Name("");
-    setLast_Name("");
-    setMiddle_Name("");
-    setPassword("");
-    setRole("");
-    setSSN("");
+    setAddress(NULL);
+    setBlocked(NULL);
+    setContact_Number(NULL);
+    setFirst_Name(NULL);
+    setLast_Name(NULL);
+    setMiddle_Name(NULL);
+    setPassword(NULL);
+    setRole(NULL);
+    setSSN(NULL);
     setUser_ID(0);
 }
 
 Users::Users(int user_id){
     setUser_ID(user_id);
-    setAddress("");
-    setBlocked("");
-    setContact_Number("");
-    setFirst_Name("");
-    setLast_Name("");
-    setMiddle_Name("");
-    setPassword("");
-    setRole("");
-    setSSN("");
+    setAddress(NULL);
+    setBlocked(NULL);
+    setContact_Number(NULL);
+    setFirst_Name(NULL);
+    setLast_Name(NULL);
+    setMiddle_Name(NULL);
+    setPassword(NULL);
+    setRole(NULL);
+    setSSN(NULL);
 }
 
 Users::Users(const QString &ssn, const QString &password){
-    setUser_ID(0);
-    setAddress("");
-    setBlocked("");
-    setContact_Number("");
-    setFirst_Name("");
-    setLast_Name("");
-    setMiddle_Name("");
+    setUser_ID(NULL);
+    setAddress(NULL);
+    setBlocked(NULL);
+    setContact_Number(NULL);
+    setFirst_Name(NULL);
+    setLast_Name(NULL);
+    setMiddle_Name(NULL);
     setPassword(password);
-    setRole("");
+    setRole(NULL);
     setSSN(ssn);
 }
 

@@ -1,25 +1,32 @@
 #include "entitycrud.h"
 
-QSqlQueryModel *EntityCRUD::viewTable() {
+QSqlQueryModel* EntityCRUD::viewTable() {
+    QSqlQueryModel *model = nullptr;
     try {
-        QSqlQueryModel *model = new QSqlQueryModel;
+        model = new QSqlQueryModel;
         model->setQuery(buildViewTableCommand());
+
+        if (model->lastError().isValid()) {
+            throw std::runtime_error(model->lastError().text().toStdString());
+        }
 
         return model;
     } catch (const std::exception& e) {
-        throw e;
+        delete model; // Clean up in case of an error
+        qWarning() << "Error in viewTable: " << e.what(); // Log the error
         return nullptr;
     }
 }
 
+
 void EntityCRUD::setRole(const QString& roleString) {
-    if (roleString == "None") {
+    if (roleString == "0") {
         role_ = Role::None;
-    } else if (roleString == "Administrator") {
+    } else if (roleString == "1") {
         role_ = Role::Administrator;
-    } else if (roleString == "Employee") {
+    } else if (roleString == "2") {
         role_ = Role::Employee;
-    } else if (roleString == "Bookie") {
+    } else if (roleString == "3") {
         role_ = Role::Bookie;
     } else {
         role_ = Role::None;

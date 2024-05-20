@@ -40,6 +40,18 @@ public:
     Application(QWidget *parent = nullptr);
     ~Application();
 
+    enum class Categories {
+        Bookings,
+        Hurricanes,
+        Users,
+        Locations,
+        Shelters
+    };
+
+    Categories getCategory() const;
+    void setCategory(Categories newCategory);
+
+
 private slots:
     // Combobox populators
     // void onRegionChanged(int index);
@@ -48,6 +60,17 @@ private slots:
     void signUpClicked();
     void signUp();
     void cancelSignUp();
+    void editProfileClicked();
+    void logout();
+    void editProfileCancelled();
+    void editProfileConfirm();
+
+    void selectworkerscreen();
+    void onBookingsButtonClicked();
+    void onHurricanesButtonClicked();
+    void onUsersButtonClicked();
+    void onLocationsButtonClicked();
+    void onSheltersButtonClicked();
 
 private:
     Ui::Application *ui;
@@ -57,9 +80,11 @@ private:
     Session session;
     BookingsCRUD CRUD_Booking;
     HurricanesCRUD CRUD_Hurricane;
-    Locations CRUD_Location;
+    LocationsCRUD CRUD_Location;
     SheltersCRUD CRUD_Shelters;
     UsersCRUD CRUD_Users;
+
+    Categories category;
 
     // Combobox initializers
     int getIdFromComboBox(const QComboBox* comboBox) const;
@@ -67,6 +92,8 @@ private:
     void populateCB_Region(QComboBox* comboBox);
     void populateCB_Location(QComboBox* comboBox, int regionId);
     void populateCB_Shelter(QComboBox* comboBox, int locationId);
+
+    void showui();
 
     int customer_RegionId;
     int customer_LocationId;

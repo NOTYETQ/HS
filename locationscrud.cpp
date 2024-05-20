@@ -190,7 +190,6 @@ QString LocationsCRUD::buildViewTableCommand() const {
     if (getRole() != Role::Administrator) {
         throw std::runtime_error ("You do not have permision");
     }
-
     QString query = "SELECT "
                     "R.Region AS 'Region', "
                     "L.Location AS 'Location' "

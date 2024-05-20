@@ -18,7 +18,7 @@
     <item>
      <widget class="QStackedWidget" name="SW_Authentication">
       <property name="currentIndex">
-       <number>2</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="W_Login">
        <layout class="QGridLayout" name="gridLayout">
@@ -99,7 +99,11 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="LE_Login_SSN"/>
+              <widget class="QLineEdit" name="LE_Login_SSN">
+               <property name="maxLength">
+                <number>9</number>
+               </property>
+              </widget>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="L_Login_PasswordTitle">
@@ -291,6 +295,211 @@ border-radius: 5px;
           <property name="currentIndex">
            <number>0</number>
           </property>
+          <widget class="QWidget" name="W_EditProfile">
+           <layout class="QHBoxLayout" name="horizontalLayout_7">
+            <item>
+             <widget class="QFrame" name="F_EditProfile">
+              <property name="maximumSize">
+               <size>
+                <width>800</width>
+                <height>500</height>
+               </size>
+              </property>
+              <property name="frameShape">
+               <enum>QFrame::StyledPanel</enum>
+              </property>
+              <property name="frameShadow">
+               <enum>QFrame::Raised</enum>
+              </property>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <item>
+                <widget class="QLabel" name="L_EditProfile_Title">
+                 <property name="text">
+                  <string>Edit Profile</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="HL_EditProfileInputs">
+                 <item>
+                  <layout class="QFormLayout" name="HL_EditProfileItems">
+                   <property name="horizontalSpacing">
+                    <number>50</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>20</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="L_EditProfile_FNameTitle">
+                     <property name="text">
+                      <string>First Name</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_FName"/>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="L_EditProfile_LNameTitle">
+                     <property name="text">
+                      <string>Last Name</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_LName"/>
+                   </item>
+                   <item row="3" column="0">
+                    <widget class="QLabel" name="L_EditProfile_AddressTitle">
+                     <property name="text">
+                      <string>Address</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="3" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_Address"/>
+                   </item>
+                   <item row="4" column="0">
+                    <widget class="QLabel" name="L_EditProfile_ContactNumberTitle">
+                     <property name="text">
+                      <string>Contact Number</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="4" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_ContactNumber"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="L_EditProfile_MName">
+                     <property name="text">
+                      <string>Middle Name</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_MName"/>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QFormLayout" name="HL_EditProfilePasswords">
+                   <property name="horizontalSpacing">
+                    <number>10</number>
+                   </property>
+                   <property name="verticalSpacing">
+                    <number>15</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>20</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>50</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>20</number>
+                   </property>
+                   <item row="0" column="0">
+                    <widget class="QLabel" name="L_EditProfile_NewPasswordTitle">
+                     <property name="text">
+                      <string>New Password</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="0" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_NewPassword"/>
+                   </item>
+                   <item row="1" column="0">
+                    <widget class="QLabel" name="L_EditProfile_NewPasswordConfirmTitle">
+                     <property name="text">
+                      <string>Confirm Password</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="1" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_NewPasswordConfirm"/>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="L_EditProfile_OldPassword">
+                     <property name="text">
+                      <string>Old Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="LE_EditProfile_OldPassword"/>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QHBoxLayout" name="HL_EditProfileButtons">
+                 <property name="spacing">
+                  <number>100</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>75</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>75</number>
+                 </property>
+                 <item>
+                  <widget class="QPushButton" name="PB_UR_EP_Okay">
+                   <property name="text">
+                    <string>Okay</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QPushButton" name="PB_UR_EP_Cancel">
+                   <property name="text">
+                    <string>Cancel</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
           <widget class="QWidget" name="W_Customer">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
@@ -789,6 +998,9 @@ border-radius: 5px;
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="maxLength">
+                        <number>9</number>
                        </property>
                       </widget>
                      </item>
@@ -1326,208 +1538,6 @@ border-radius: 5px;
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="W_EditProfile">
-           <layout class="QHBoxLayout" name="horizontalLayout_7">
-            <item>
-             <widget class="QFrame" name="F_EditProfile">
-              <property name="maximumSize">
-               <size>
-                <width>800</width>
-                <height>500</height>
-               </size>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-              <layout class="QVBoxLayout" name="verticalLayout_9">
-               <item>
-                <widget class="QLabel" name="L_EditProfile_Title">
-                 <property name="text">
-                  <string>Edit Profile</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="HL_EditProfileInputs">
-                 <item>
-                  <layout class="QFormLayout" name="HL_EditProfileItems">
-                   <property name="horizontalSpacing">
-                    <number>50</number>
-                   </property>
-                   <property name="verticalSpacing">
-                    <number>15</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>50</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>20</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>50</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>20</number>
-                   </property>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="L_EditProfile_FNameTitle">
-                     <property name="text">
-                      <string>First Name</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_FName"/>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QLabel" name="L_EditProfile_LNameTitle">
-                     <property name="text">
-                      <string>Last Name</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_LName"/>
-                   </item>
-                   <item row="2" column="0">
-                    <widget class="QLabel" name="L_EditProfile_AddressTitle">
-                     <property name="text">
-                      <string>Address</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_Address"/>
-                   </item>
-                   <item row="3" column="0">
-                    <widget class="QLabel" name="L_EditProfile_ContactNumberTitle">
-                     <property name="text">
-                      <string>Contact Number</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="3" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_ContactNumber"/>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QFormLayout" name="HL_EditProfilePasswords">
-                   <property name="horizontalSpacing">
-                    <number>10</number>
-                   </property>
-                   <property name="verticalSpacing">
-                    <number>15</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>50</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>20</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>50</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>20</number>
-                   </property>
-                   <item row="0" column="0">
-                    <widget class="QLabel" name="L_EditProfile_NewPasswordTitle">
-                     <property name="text">
-                      <string>New Password</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="0" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_NewPassword"/>
-                   </item>
-                   <item row="1" column="0">
-                    <widget class="QLabel" name="L_EditProfile_NewPasswordConfirmTitle">
-                     <property name="text">
-                      <string>Confirm Password</string>
-                     </property>
-                     <property name="alignment">
-                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="1" column="1">
-                    <widget class="QLineEdit" name="LE_EditProfile_NewPasswordConfirm"/>
-                   </item>
-                   <item row="3" column="0" colspan="2">
-                    <widget class="QPushButton" name="PB_EditProfile_ChangePassword">
-                     <property name="text">
-                      <string>Change Password</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="0">
-                    <widget class="QLabel" name="label">
-                     <property name="text">
-                      <string>Old Password</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item row="2" column="1">
-                    <widget class="QLineEdit" name="lineEdiLE_EditProfile_OldPassword"/>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
-               <item>
-                <layout class="QHBoxLayout" name="HL_EditProfileButtons">
-                 <property name="spacing">
-                  <number>100</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>75</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>75</number>
-                 </property>
-                 <item>
-                  <widget class="QPushButton" name="PB_UR_EP_Okay">
-                   <property name="text">
-                    <string>Okay</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QPushButton" name="PB_UR_EP_Cancel">
-                   <property name="text">
-                    <string>Cancel</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-              </layout>
-             </widget>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </item>
        </layout>
@@ -1602,7 +1612,11 @@ border-radius: 5px;
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QLineEdit" name="LE_SignUp_SSN"/>
+              <widget class="QLineEdit" name="LE_SignUp_SSN">
+               <property name="maxLength">
+                <number>9</number>
+               </property>
+              </widget>
              </item>
              <item row="1" column="0">
               <widget class="QLabel" name="L_SignUp_FName">

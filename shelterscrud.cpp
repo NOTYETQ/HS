@@ -190,7 +190,7 @@ QString SheltersCRUD::buildUpdateCommand() const {
 }
 
 QString SheltersCRUD::buildViewTableCommand() const {
-    QString queryStr = "DELETE FROM Shelters WHERE Shelter_ID = :shelter_id";
+    QString queryStr = "SELECT * FROM Shelters;";
     return queryStr;
 }
 

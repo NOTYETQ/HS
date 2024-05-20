@@ -57,7 +57,7 @@ Users Session::getCurrent_User() {
 bool Session::verifyCredentials(const Users& loginAttempt, Users& authenticatedUser) {
     try {
         QSqlQuery query;
-        query.prepare("SELECT u.User_ID, u.SSN, r.Role, u.First_Name, u.Middle_Name, u.Last_Name, u.Address, u.Contact_Number, u.Blocked, u.Password "
+        query.prepare("SELECT u.User_ID, u.SSN, u.Role, u.First_Name, u.Middle_Name, u.Last_Name, u.Address, u.Contact_Number, u.Blocked, u.Password "
                       "FROM Users u "
                       "JOIN Roles r ON u.Role = r.Role_ID "
                       "WHERE u.SSN = :ssn AND u.Password = :password;");

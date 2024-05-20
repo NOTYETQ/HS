@@ -15,6 +15,15 @@ bool UsersCRUD::add(const Entity &entity){
         if (!users) {
             throw DatabaseException ("Invalid Object");
         }
+        if (users->getAddress().isEmpty() ||
+            users->getContact_Number().isEmpty() || users->getFirst_Name().isEmpty() ||
+            users->getLast_Name().isEmpty() || users->getMiddle_Name().isEmpty() ||
+            users->getPassword().isEmpty() ||
+            users->getSSN().isEmpty()) {
+            // Handle the case where any of the values are empty
+            throw std::invalid_argument("One or more values are empty.");
+            // Or you can return from the function, throw an exception, or handle it in any appropriate way
+        }
 
         if (userExists(users->getSSN())) {
             throw;
@@ -168,8 +177,8 @@ QString UsersCRUD::buildInsertCommand() const {
     case Role::Bookie:
         throw std::runtime_error("You do not have permission");
     case Role::None:
-        queryStr = "INSERT INTO Users (SSN, First_Name, Middle_Name, Last_Name, Address, Contact_Number, Password) "
-                   "VALUES (:ssn, :fname, :middlename, :lname, :address, :contactnumber, :pass)";
+        queryStr = "INSERT INTO Users (SSN, Role, First_Name, Middle_Name, Last_Name, Address, Contact_Number, Password) "
+                   "VALUES (:ssn, 3 ,:fname, :middlename, :lname, :address, :contactnumber, :pass)";
         break;
     case Role::Employee:
         queryStr = "INSERT INTO Users (SSN, First_Name, Middle_Name, Last_Name, Address, Contact_Number, Blocked, Password) "
