@@ -45,9 +45,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 
 
-
-
-
 }
 
 
@@ -274,7 +271,41 @@ void MainWindow::confirmAction(Category category, Action action) {
 
 // Function to hide all UI elements
 void MainWindow::hideAllUI() {
-    // Implement hiding of all UI elements
+    // main middle screen for tableviews
+    ui->SW_Workers_Screen->hide();
+    ui->TV_Workers->hide();
+
+    //forms
+    ui->F_EditProfile->hide();
+    ui->F_Customer_AddBooking->hide();
+    ui->F_SignUp->hide();
+    ui->F_Login->hide();
+    ui->F_EditProfile->hide();
+    ui->F_Customer_Menu->hide();
+    ui->F_Workers_TableHeader->hide();
+
+//right side buttons
+    ui->PB_Workers_View->hide();
+    ui->PB_Workers_Add->hide();
+    ui->PB_Workers_Edit->hide();
+    ui->PB_Workers_Delete->hide();
+
+//left side buttons
+    ui->PB_Workers_Screen_Bookings->hide();
+    ui->PB_Workers_Screen_Hurricanes->hide();
+    ui->PB_Workers_Screen_Location->hide();
+    ui->PB_Workers_Screen_Shelters->hide();
+    ui->PB_Workers_Screen_Users->hide();
+
+//top part
+    ui->L_Header_TimeTitle->hide();
+    ui->L_Header_DateTitle->hide();
+    ui->L_Header_CurrentUserTitle->hide();
+    ui->PB_Header_Logout->hide();
+    ui->PB_Header_EditProfile->hide();
+
+    //make frame with title and line for search edit and searc button and filter combobox then hide it
+
 }
 
 // Helper function to populate combo boxes
@@ -346,7 +377,12 @@ void MainWindow::refreshUsersTable() {
         if (model->lastError().isValid()) {
             throw std::runtime_error(model->lastError().text().toStdString());
         }
-        ui->TV_Workers_TableView->setModel(model);
+        // Adjust column widths
+        ui->TV_Workers->resizeColumnsToContents();
+
+        // Set column alignment
+        ui->TV_Workers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->TV_Workers->setModel(model);
     } catch (const std::exception &e) {
         QMessageBox::critical(this, "Error", QString("Failed to refresh Users table: %1").arg(e.what()), QMessageBox::Cancel);
     }
@@ -368,7 +404,13 @@ void MainWindow::refreshSheltersTable() {
         if (model->lastError().isValid()) {
             throw std::runtime_error(model->lastError().text().toStdString());
         }
-        ui->TV_Workers_TableView->setModel(model);
+
+        // Adjust column widths
+        ui->TV_Workers->resizeColumnsToContents();
+
+        // Set column alignment
+        ui->TV_Workers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->TV_Workers->setModel(model);
     } catch (const std::exception &e) {
         QMessageBox::critical(this, "Error", QString("Failed to refresh Shelters table: %1").arg(e.what()), QMessageBox::Cancel);
     }
@@ -389,7 +431,13 @@ void MainWindow::refreshBookingsTable() {
         if (model->lastError().isValid()) {
             throw std::runtime_error(model->lastError().text().toStdString());
         }
-        ui->TV_Workers_TableView->setModel(model);
+
+        // Adjust column widths
+        ui->TV_Workers->resizeColumnsToContents();
+
+        // Set column alignment
+        ui->TV_Workers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->TV_Workers->setModel(model);
     } catch (const std::exception &e) {
         QMessageBox::critical(this, "Error", QString("Failed to refresh Bookings table: %1").arg(e.what()), QMessageBox::Cancel);
     }
@@ -409,7 +457,13 @@ void MainWindow::refreshHurricanesTable() {
         if (model->lastError().isValid()) {
             throw std::runtime_error(model->lastError().text().toStdString());
         }
-        ui->TV_Workers_TableView->setModel(model);
+
+        // Adjust column widths
+        ui->TV_Workers->resizeColumnsToContents();
+
+        // Set column alignment
+        ui->TV_Workers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->TV_Workers->setModel(model);
     } catch (const std::exception &e) {
         QMessageBox::critical(this, "Error", QString("Failed to refresh Hurricanes table: %1").arg(e.what()), QMessageBox::Cancel);
     }
@@ -427,7 +481,13 @@ void MainWindow::refreshLocationsTable() {
         if (model->lastError().isValid()) {
             throw std::runtime_error(model->lastError().text().toStdString());
         }
-        ui->TV_Workers_TableView->setModel(model);
+
+        // Adjust column widths
+        ui->TV_Workers->resizeColumnsToContents();
+
+        // Set column alignment
+        ui->TV_Workers->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+        ui->TV_Workers->setModel(model);
     } catch (const std::exception &e) {
         QMessageBox::critical(this, "Error", QString("Failed to refresh Locations table: %1").arg(e.what()), QMessageBox::Cancel);
     }
@@ -435,32 +495,209 @@ void MainWindow::refreshLocationsTable() {
 
 
 // Function to handle button clicks for worker screens
-void MainWindow::on_PB_Workers_Screen_Users_clicked() {
-    setCurrentTable(Users);
-    refreshTable(Users);
-    ui->SW_Workers_Screen->setCurrentIndex(1); // Assuming 1 is the index for Users screen
+void MainWindow::on_PB_Workers_Screen_Users_clicked()
+{
+    ui->F_Workers_MenuItems->show();
+    ui->L_Workers_TableHeaderTitle->setText("Users");
+    // sets it to the tablescreen
+    ui->SW_Workers_Screen->setCurrentIndex(0);
+    refreshUsersTable();
+    setCurrentTable(5);
 }
 
-void MainWindow::on_PB_Workers_Screen_Shelters_clicked() {
-    setCurrentTable(Shelters);
-    refreshTable(Shelters);
-    ui->SW_Workers_Screen->setCurrentIndex(2); // Assuming 2 is the index for Shelters screen
+
+void MainWindow::on_PB_Workers_Screen_Shelters_clicked()
+{
+    ui->F_Workers_MenuItems->show();
+    ui->L_Workers_TableHeaderTitle->setText("Shelters");
+    ui->SW_Workers_Screen->setCurrentIndex(0);
+    refreshSheltersTable();
+    setCurrentTable(4);
 }
 
-void MainWindow::on_PB_Workers_Screen_Bookings_clicked() {
-    setCurrentTable(Bookings);
-    refreshTable(Bookings);
-    ui->SW_Workers_Screen->setCurrentIndex(3); // Assuming 3 is the index for Bookings screen
+
+void MainWindow::on_PB_Workers_Screen_Bookings_clicked()
+{
+    ui->F_Workers_MenuItems->show();
+    ui->L_Workers_TableHeaderTitle->setText("Bookings");
+    ui->SW_Workers_Screen->setCurrentIndex(0);
+    refreshBookingsTable();
+    setCurrentTable(1);
 }
 
-void MainWindow::on_PB_Workers_Screen_Hurricanes_clicked() {
-    setCurrentTable(Hurricanes);
-    refreshTable(Hurricanes);
-    ui->SW_Workers_Screen->setCurrentIndex(4); // Assuming 4 is the index for Hurricanes screen
+
+void MainWindow::on_PB_Workers_Screen_Hurricanes_clicked()
+{
+    ui->F_Workers_MenuItems->show();
+    ui->L_Workers_TableHeaderTitle->setText("Hurricanes");
+    ui->SW_Workers_Screen->setCurrentIndex(0);
+    refreshHurricanesTable();
+    setCurrentTable(2);
 }
 
-void MainWindow::on_PB_Workers_Screen_Location_clicked() {
-    setCurrentTable(Locations);
-    refreshTable(Locations);
-    ui->SW_Workers_Screen->setCurrentIndex(5); // Assuming 5 is the index for Locations screen
+
+void MainWindow::on_PB_Workers_Screen_Location_clicked()
+{
+    ui->F_Workers_MenuItems->show();
+    ui->L_Workers_TableHeaderTitle->setText("Locations");
+    ui->SW_Workers_Screen->setCurrentIndex(0);
+    refreshLocationsTable();
+    setCurrentTable(3);
 }
+
+void MainWindow::on_PB_Login_Login_clicked()
+{
+    int ssn = ui->LE_Login_SSN->text().toInt();
+    QString password = ui->LE_Login_Password->text();
+
+    int login = userManager.Login(ssn, password);
+
+    if (login != -1) {
+        ui->SW_Authentication->setCurrentIndex(1);
+
+
+        switch (login){
+
+        case(1)://admin //workers
+            ui->SW_RoleScreenChanger->setCurrentIndex(0);
+
+            break;
+
+        case (2)://employee
+            ui->SW_RoleScreenChanger->setCurrentIndex(0);
+
+
+            break;
+
+        case(3): //customer
+
+            ui->SW_RoleScreenChanger->setCurrentIndex(1);
+
+            break;
+
+
+        default://does not exist
+            return;
+        }
+
+    }
+}
+
+
+void MainWindow::on_PB_Header_Logout_clicked()
+{
+    userManager.Logout();//will have to change this since classse changed
+    ui->SW_Authentication->setCurrentIndex(0);
+}
+
+//implementation for the add
+
+/*
+
+// Retrieve user input from QLineEdit widgets
+    QString ssn = ui->lineEditSSN->text();
+    QString firstName = ui->lineEditFirstName->text();
+    QString lastName = ui->lineEditLastName->text();
+    QString address = ui->lineEditAddress->text();
+    // Retrieve user input from QComboBox
+    Role role = static_cast<Role>(ui->comboBoxRole->currentIndex()); // Assuming comboBoxRole is populated with Role enum values
+
+    // Validate user input (e.g., check if required fields are not empty)
+
+    // Create a UserInfo object with the collected data
+    UserInfo userInfo;
+    userInfo.ssn = ssn;
+    userInfo.fname = firstName;
+    userInfo.lname = lastName;
+    userInfo.address = address;
+    userInfo.role = role;
+
+    // Call the AddUser function to insert the user into the database
+    Administrators admin; // Assuming AddUser is a member function of the Administrators class
+    admin.AddUser(userInfo);
+
+    // Provide feedback to the user (e.g., show a message box)
+    QMessageBox::information(this, "Success", "User added successfully.");
+
+//edit button
+
+
+void MainWindow::onEditUserClicked() {
+
+// Make the SSN field read-only since it shouldn't be edited
+    ui->lineEditSSN->setDisabled(true);
+
+
+    // Retrieve user input from QLineEdit widgets
+    QString ssn = ui->lineEditSSN->text();
+    QString firstName = ui->lineEditFirstName->text();
+    QString lastName = ui->lineEditLastName->text();
+    QString address = ui->lineEditAddress->text();
+    QString contactNumber = ui->lineEditContactNumber->text();
+    QString password = ui->lineEditPassword->text();
+    bool blocked = ui->checkBoxBlocked->isChecked(); // Assuming there's a checkbox for blocked status
+    Role role = static_cast<Role>(ui->comboBoxRole->currentIndex()); // Assuming comboBoxRole is populated with Role enum values
+
+    // Validate user input (e.g., check if required fields are not empty)
+
+    // Create a UserInfo object with the collected data
+    UserInfo userInfo;
+    userInfo.ssn = ssn;
+    userInfo.fname = firstName;
+    userInfo.lname = lastName;
+    userInfo.address = address;
+    userInfo.contactnumber = contactNumber;
+    userInfo.password = password;
+    userInfo.blocked = blocked;
+    userInfo.role = role;
+
+    // Call the EditUser function to update the user in the database
+    Administrators admin; // Assuming EditUser is a member function of the Administrators class
+    admin.EditUser(userInfo);
+
+    // Provide feedback to the user (e.g., show a message box)
+    QMessageBox::information(this, "Success", "User edited successfully.");
+}
+    //put this at the top where setupui(this) is
+     connect(ui->editUserButton, &QPushButton::clicked, this, &MainWindow::onEditUserClicked);
+
+
+    //delete user
+void MainWindow::onDeleteUserClicked() {
+    // Get the selection model from the QTableView
+    QItemSelectionModel *selectionModel = ui->userTableView->selectionModel();
+
+    // Check if a row is selected
+    if (!selectionModel->hasSelection()) {
+        QMessageBox::warning(this, "Delete User", "Please select a user to delete.");
+        return;
+    }
+
+    // Get the index of the selected row
+    QModelIndex selectedIndex = selectionModel->currentIndex();
+
+    // Retrieve the SSN from the selected row (assuming SSN is in the first column)
+    QString ssn = selectedIndex.sibling(selectedIndex.row(), 0).data().toString();
+
+    // Create a UserInfo object with the SSN
+    UserInfo userInfo;
+    userInfo.ssn = ssn;
+
+    // Call the DeleteUser function to remove the user from the database
+    Users users; // Assuming DeleteUser is a member function of the Users class
+    users.DeleteUser(userInfo);
+
+    // Remove the selected row from the model
+    ui->userTableView->model()->removeRow(selectedIndex.row());
+
+    // Provide feedback to the user
+    QMessageBox::information(this, "Success", "User deleted successfully.");
+
+
+}
+
+   connect(ui->deleteButton, &QPushButton::clicked, this, &MainWindow::onDeleteUserClicked);
+
+ */
+
+

@@ -45,7 +45,7 @@ bool BookingsCRUD::view(const Entity& entity) {
     QString query = "INSERT INTO Bookings (Hurricane, User, Status, Shelter, Booking_Date_Time) "
                     "SELECT "
                     "(SELECT Hurricane_ID FROM Hurricanes WHERE Name = :hurricane), "
-                    "(Select User FROM Users WHERE UserSSN = :userssn)
+                    "(Select User FROM Users WHERE UserSSN = :userssn)"
                     "(SELECT Status_ID FROM Status WHERE Status = :status), "
                     "(SELECT Shelter_ID FROM Shelters WHERE Name = :shelter), "
                     "NOW();";

@@ -13,6 +13,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#MainWindow{
+	background-color: rgb(15, 171, 185);
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
@@ -294,7 +299,7 @@ border-radius: 5px;
           <widget class="QWidget" name="W_Customer">
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
-             <widget class="QFrame" name="frame">
+             <widget class="QFrame" name="CustomerMaps">
               <property name="frameShape">
                <enum>QFrame::StyledPanel</enum>
               </property>
@@ -306,7 +311,7 @@ border-radius: 5px;
             <item>
              <widget class="QStackedWidget" name="SW_Customer_MenuSwitcher">
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="W_Customer_Menu">
                <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -501,6 +506,21 @@ background-color: rgb(53, 174, 255);
               <layout class="QVBoxLayout" name="verticalLayout_11">
                <item>
                 <widget class="QPushButton" name="PB_Workers_Screen_Bookings">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Screen_Bookings{
+background-color: rgb(37, 207, 136);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Screen_Bookings:hover {
+    	background-color: rgb(21, 171, 114);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Bookings</string>
                  </property>
@@ -508,6 +528,21 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Screen_Hurricanes">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Screen_Hurricanes{
+background-color: rgb(37, 207, 136);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Screen_Hurricanes:hover {
+    	background-color: rgb(21, 171, 114);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Hurricanes</string>
                  </property>
@@ -515,6 +550,21 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Screen_Location">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Screen_Location{
+background-color: rgb(37, 207, 136);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Screen_Location:hover {
+    	background-color: rgb(21, 171, 114);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Locations</string>
                  </property>
@@ -522,6 +572,21 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Screen_Shelters">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Screen_Shelters{
+background-color: rgb(37, 207, 136);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Screen_Shelters:hover {
+    	background-color: rgb(21, 171, 114);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Shelters</string>
                  </property>
@@ -529,6 +594,21 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Screen_Users">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Screen_Users{
+background-color: rgb(37, 207, 136);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Screen_Users:hover {
+    	background-color: rgb(21, 171, 114);
+}</string>
+                 </property>
                  <property name="text">
                   <string>Users</string>
                  </property>
@@ -1157,6 +1237,22 @@ background-color: rgb(53, 174, 255);
               <layout class="QVBoxLayout" name="verticalLayout_12">
                <item>
                 <widget class="QPushButton" name="PB_Workers_View">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_View{
+background-color: rgb(53, 174, 255);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_View:hover {
+    background-color: rgb(255, 7, 40); 
+}
+</string>
+                 </property>
                  <property name="text">
                   <string>View</string>
                  </property>
@@ -1164,6 +1260,22 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Add">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Add{
+background-color: rgb(53, 174, 255);
+    font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+
+}
+
+#PB_Workers_Add:hover {
+  background-color: rgb(28, 89, 255); 
+}</string>
+                 </property>
                  <property name="text">
                   <string>Add</string>
                  </property>
@@ -1171,6 +1283,22 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Edit">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Edit{
+background-color: rgb(53, 174, 255);
+    font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+
+}
+
+#PB_Workers_Edit:hover {
+  background-color: rgb(28, 89, 255); 
+}</string>
+                 </property>
                  <property name="text">
                   <string>Edit</string>
                  </property>
@@ -1178,6 +1306,21 @@ background-color: rgb(53, 174, 255);
                </item>
                <item>
                 <widget class="QPushButton" name="PB_Workers_Delete">
+                 <property name="styleSheet">
+                  <string notr="true">#PB_Workers_Delete{
+background-color: rgb(255, 35, 105);
+	font-family: &quot;Arial&quot;;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+border-radius: 5px;
+ padding: 5px;
+}
+
+#PB_Workers_Delete:hover {
+    background-color: rgb(255, 7, 40); 
+}</string>
+                 </property>
                  <property name="text">
                   <string>Delete</string>
                  </property>
@@ -1337,12 +1480,22 @@ background-color: rgb(53, 174, 255);
                    <item row="1" column="1">
                     <widget class="QLineEdit" name="LE_EditProfile_NewPasswordConfirm"/>
                    </item>
-                   <item row="2" column="0" colspan="2">
+                   <item row="3" column="0" colspan="2">
                     <widget class="QPushButton" name="PB_EditProfile_ChangePassword">
                      <property name="text">
                       <string>Change Password</string>
                      </property>
                     </widget>
+                   </item>
+                   <item row="2" column="0">
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Old Password</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item row="2" column="1">
+                    <widget class="QLineEdit" name="lineEdiLE_EditProfile_OldPassword"/>
                    </item>
                   </layout>
                  </item>
