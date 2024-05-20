@@ -12,6 +12,7 @@ CONFIG += c++17
 SOURCES += \
     bookings.cpp \
     bookingscrud.cpp \
+    databasemanager.cpp \
     entity.cpp \
     entitycrud.cpp \
     hurricanes.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
     locationscrud.cpp \
     main.cpp \
     mainwindow.cpp \
+    session.cpp \
     shelters.cpp \
     shelterscrud.cpp \
     users.cpp \
@@ -29,6 +31,7 @@ HEADERS += \
     Errors.h \
     bookings.h \
     bookingscrud.h \
+    databasemanager.h \
     entity.h \
     entitycrud.h \
     hurricanes.h \
@@ -36,6 +39,7 @@ HEADERS += \
     locations.h \
     locationscrud.h \
     mainwindow.h \
+    session.h \
     shelters.h \
     shelterscrud.h \
     users.h \

@@ -4,62 +4,205 @@ BookingsCRUD::BookingsCRUD()
 {
 
 }
-bool BookingsCRUD::add(const Entity& entity) override {
-    const Bookings& booking = static_cast<const Bookings&>(entity);
-    QString insertCommand = buildInsertCommand(booking);
+BookingsCRUD::~BookingsCRUD(){
 
-    QSqlQuery query = m_database.prepare(insertCommand); // Assuming m_database is a member
-
-    query.bindValue(":hurricane", booking.getHurricane()); // Bind values using getters
-    query.bindValue(":userssn", booking.getUserSSN());
-    query.bindValue(":status", booking.getStatus());
-    query.bindValue(":shelter", booking.getShelter());
-
+}
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// CRUD ADD FUNCTION
+// Uses Values hurricaneid, userid, statusid, shelterid
+// Accepts an object with these values already initialized
+// Proper exception handling is left
+// uses the buildInsertCommand()
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+bool BookingsCRUD::add(const Entity& entity) {
     try {
-        query.exec();
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception (std::string("Invalid Object"));
+        }
+        QSqlQuery query;
+        query.prepare(buildInsertCommand());
+        query.bindValue(":hurricane_id", bookings->getHurricane());
+        query.bindValue(":user_id", bookings->getUserSSN());
+        query.bindValue(":status_id", bookings->getStatus());
+        query.bindValue(":shelter_id", bookings->getShelter());
+
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+
+        qDebug("Success");
         return true;
-    } catch (const std::runtime_error& error) {
-        qDebug() << "Error adding booking: " << error.what();
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
+        return false;
+    }
+
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// CRUD Edit FUNCTION
+// Uses Values hurricaneid, userid, statusid, shelterid, bookingid
+// Accepts an object with these values already initialized
+// Proper exception handling is left
+// uses the buildUpdateCommand()
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+bool BookingsCRUD::edit(const Entity& entity) {
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+        QSqlQuery query;
+        query.prepare(buildUpdateCommand());
+        query.bindValue(":booking_id", bookings->getBooking_ID());
+        query.bindValue(":hurricane_id", bookings->getHurricane());
+        query.bindValue(":user_id", bookings->getUserSSN());
+        query.bindValue(":status_id", bookings->getStatus());
+        query.bindValue(":shelter_id", bookings->getShelter());
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+
+        qDebug("Success");
+
+        return true;
+
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
         return false;
     }
 }
-`bool BookingsCRUD::edit(const Entity& entity) {
-    dynamic_cast<Bookings*>(&entity);
-
-}
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// CRUD Delete FUNCTION
+// Uses Values bookingid
+// Accepts an object with these values already initialized
+// Proper exception handling is left
+// uses the buildDeleteCommand()
+// ------------------------------------------------------------------------------------------------------------------------------------------------
 bool BookingsCRUD::delete_(const Entity& entity) {
-    dynamic_cast<Bookings*>(&entity);
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+        QSqlQuery query;
+        query.prepare(buildDeleteCommand());
+        query.bindValue(":booking_id", bookings->getBooking_ID());
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+        qDebug() << "Delete Sucess.";
+        return true;
+    } catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
+        return false;
+    }
+}
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// CRUD View FUNCTION
+// Uses Values bookingid
+// Accepts an object with these values already initialized and a second object
+// Writes whatever was received from the database into a second object, can use the same object
+// Proper exception handling is left
+// uses the buildViewCommand()
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+bool BookingsCRUD::view(const Entity& entity, Entity& newentity) const {
+    try {
+        const Bookings* bookings = dynamic_cast<const Bookings*>(&entity);
+        if (!bookings) {
+            throw std::exception ("Invalid Object");
+        }
+
+        QSqlQuery query;
+        query.prepare(buildSelectCommand());
+        query.bindValue(":booking_id", bookings->getBooking_ID());
+
+        if (!query.exec()) {
+            throw std::runtime_error("something went wrong: " + query.lastError().text().toStdString());
+        }
+        qDebug("Query Success");
+
+        if (!query.next()) {
+            throw std::exception("Booking Not Found");
+        }
+
+        // Cast newentity to Bookings* (assuming it's valid) and populate using setters
+        Bookings* mutableBooking = dynamic_cast<Bookings*>(&newentity);
+        if (!mutableBooking) {
+            throw std::exception ("Invalid Object");
+        }
+
+        mutableBooking->setHurricane(query.value("Hurricane").toString());
+        mutableBooking->setUserSSN(query.value("SSN").toString());
+        mutableBooking->setShelter(query.value("Shelter").toString());
+        mutableBooking->setStatus(query.value("Status").toString());
+        mutableBooking->setBooking_Date_Time(query.value("Booking_Date_Time").toString());
+        mutableBooking->setBooking_ID(query.value("Booking_ID").toInt();
+        return true;
+
+    }  catch (std::runtime_error) {
+        throw;
+        return false;
+    } catch (std::exception) {
+        throw;
+        return false;
+    }
 
 }
-bool BookingsCRUD::view(const Entity& entity) {
-                                              dynamic_cast<Bookings*>(&entity)
 
-}
-
- QString getTableName() const{
+QString BookingsCRUD::getTableName() const{
     return "Bookings";
 }
- QString buildInsertCommand(const Entity& entity) const{
-     Bookings bookings = dynamic_cast<Bookings*>(&entity);
 
-    QString query = "INSERT INTO Bookings (Hurricane, User, Status, Shelter, Booking_Date_Time) "
-                    "SELECT "
-                    "(SELECT Hurricane_ID FROM Hurricanes WHERE Name = :hurricane), "
-                    "(Select User FROM Users WHERE UserSSN = :userssn)"
-                    "(SELECT Status_ID FROM Status WHERE Status = :status), "
-                    "(SELECT Shelter_ID FROM Shelters WHERE Name = :shelter), "
-                    "NOW();";
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// Build Commands
+// The Queries used in the functions
+// Uses the ids of the linking tables instead of the names due to potential conflicts
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+QString BookingsCRUD::buildInsertCommand() const {
+    return  "INSERT INTO Bookings "
+                "(Hurricane, User, Status, Shelter, Booking_Date_Time) "
+            "VALUES "
+                "(:hurricane_id, :user_id, :status_id, :shelter_id, Now())";
+}
+QString BookingsCRUD::buildUpdateCommand() const {
+    return  "UPDATE Bookings SET "
+           "Hurricane = :hurricane_id, "
+           "User = :user_id, "
+           "Status = :status_id, "
+           "Shelter = :shelter_id "
+           "WHERE Booking_ID = :booking_id";
+}
 
- }
- QString buildUpdateCommand(const Entity& entity) const{
-     dynamic_cast<Bookings*>(&entity);
- }
- QString buildDeleteCommand(const Entity& entity) const{
-     dynamic_cast<Bookings*>(&entity);
- }
- QString buildSelectCommand(const Entity& entity) const{
-     dynamic_cast<Bookings*>(&entity);
- }
- QString buildViewTableCommand() const{
-     dynamic_cast<Bookings*>(&entity);
- }
+QString BookingsCRUD::buildDeleteCommand() const {
+    return  "DELETE FROM Bookings "
+           "WHERE Booking_ID = :booking_id";
+}
+
+QString BookingsCRUD::buildSelectCommand() const {
+    return  "SELECT b.Booking_ID, h.Hurricane, u.SSN, s.Status, sh.Shelter, b.Booking_Date_Time "
+           "FROM Bookings b "
+           "JOIN Hurricanes h ON b.Hurricane = h.Hurricane_ID "
+           "JOIN Users u ON b.User = u.User_ID "
+           "JOIN Status s ON b.Status = s.Status_ID "
+           "JOIN Shelters sh ON b.Shelter = sh.Shelter_ID "
+           "WHERE b.Booking_ID = :booking_id;";
+}
+
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+// Query to update the current tableview
+// ------------------------------------------------------------------------------------------------------------------------------------------------
+QString BookingsCRUD::buildViewTableCommand() const {
+    return "INSERT INTO Bookings (Hurricane, User, Status, Shelter, Booking_Date_Time) "
+           "VALUES (:hurricane_id, :user, :status_id, :shelter_id, :booking_date_time)";
+}

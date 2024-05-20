@@ -3,11 +3,11 @@
 
 #include "entity.h"
 
-class Locations
-{
+class Locations : public Entity {
 public:
     Locations();
-    ~Location();
+    ~Locations();
+
     void setLocation_ID(int location_id);
     void setRegion(const QString &region);
     void setLocation(const QString &location);
@@ -15,6 +15,7 @@ public:
     int getLocation_ID() const;
     QString getRegion() const;
     QString getLocation() const;
+
 private:
     int Location_ID;
     QString Region;
