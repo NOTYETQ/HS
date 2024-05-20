@@ -234,3 +234,36 @@ QString BookingsCRUD::buildViewTableCommand() const {
            "JOIN Status s ON b.Status = s.Status_ID "
            "JOIN Shelters sh ON b.Shelter = sh.Shelter_ID ";
 }
+
+// user has active booking
+bool BookingsCRUD::hasActiveBooking(int user_id) {
+    try {
+        QSqlQuery query;
+        query.prepare("SELECT COUNT(*) FROM Bookings WHERE User = :user_id AND Status = 1");
+        query.bindValue(":user_id", user_id);
+
+        if (!query.exec()) {
+            throw QueryError(query.lastError().text());
+        }
+
+        if (query.next()) {
+            int count = query.value(0).toInt();
+            if (count == 1) {
+                return true; // One active booking
+            } else if (count > 1) {
+                throw std::exception ("More than one active booking found.");
+            } else {
+                throw std::exception ("No active bookings found.");
+            }
+        } else {
+            throw std::exception ("Failed to retrieve booking count.");
+        }
+    } catch (const HurricaneError& e) {
+        qDebug() << "Booking Error: " << e.what();
+        QMessageBox::critical(nullptr, "Hurricane Error", e.what());
+    } catch (const std::exception& e) {
+        qDebug() << "Standard Exception: " << e.what();
+        QMessageBox::critical(nullptr, "Error", e.what());
+    }
+    return false;
+}

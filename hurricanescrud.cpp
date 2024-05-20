@@ -181,3 +181,34 @@ QString HurricanesCRUD::buildViewTableCommand() const {
 QString HurricanesCRUD::getTableName() const {
     return "Hurricanes";
 }
+
+
+bool HurricanesCRUD::isHurricaneActive(int hurricane_id) {
+    try {
+        QSqlQuery query;
+        query.prepare("SELECT COUNT(*) FROM Hurricanes WHERE Hurricane_ID = :hurricane_id AND Active = 1");
+        query.bindValue(":hurricane_id", hurricane_id);
+
+        if (!query.exec()) {
+            throw QueryError(query.lastError().text());
+        }
+
+        if (query.next()) {
+            int count = query.value(0).toInt();
+            if (count == 1) {
+                return true; // One active hurricane
+            } else if (count > 1) {
+                throw std::exception("More than one hurricane is active.");
+            } else {
+                throw std::exception("No hurricanes are active.");
+            }
+        } else {
+            throw std::exception("Failed to retrieve hurricane count.");
+        }
+    } catch (const std::exception& e) {
+        qDebug() << "Standard Exception: " << e.what();
+        QMessageBox::critical(nullptr, "Error", e.what());
+    }
+    return false;
+}
+

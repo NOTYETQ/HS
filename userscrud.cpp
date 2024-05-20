@@ -237,17 +237,37 @@ QString UsersCRUD::buildViewTableCommand() const {
     case Role::None:
         throw std::runtime_error("You do not have permission");
     case Role::Employee:
-        queryStr = "SELECT u.User_ID, u.SSN, r.Role, u.First_Name, u.Middle_Name, u.Last_Name, u.Address, "
-                   "u.Contact_Number, u.Blocked, u.Password "
-                   "FROM Users u "
-                   "JOIN Roles r ON u.Role = r.Role_ID "
-                   "WHERE u.Role = 3";
+        queryStr = "SELECT "
+                   "LPAD(U.SSN, 9, '0') AS 'SSN', "
+                   "R.Role AS 'Role', "
+                   "U.First_Name AS 'First Name', "
+                   "U.Middle_Name AS 'Middle Name', "
+                   "U.Last_Name AS 'Last Name', "
+                   "U.Address AS 'Address', "
+                   "U.Contact_Number AS 'Contact Number', "
+                   "CASE WHEN U.Blocked = 1 THEN '✔' ELSE '❌' END AS 'Blocked', "
+                   "U.Password AS 'Password' "
+                   "FROM "
+                   "Users U "
+                   "JOIN "
+                   "Roles R ON U.Role = R.Role_ID;"
+                   "WHERE u.Role = 3;";
         break;
     case Role::Administrator:
-        queryStr = "SELECT u.User_ID, u.SSN, r.Role, u.First_Name, u.Middle_Name, u.Last_Name, u.Address, "
-                   "u.Contact_Number, u.Blocked, u.Password "
-                   "FROM Users u "
-                   "JOIN Roles r ON u.Role = r.Role_ID";
+        queryStr = "SELECT "
+                   "LPAD(U.SSN, 9, '0') AS 'SSN', "
+                   "R.Role AS 'Role', "
+                   "U.First_Name AS 'First Name', "
+                   "U.Middle_Name AS 'Middle Name', "
+                   "U.Last_Name AS 'Last Name', "
+                   "U.Address AS 'Address', "
+                   "U.Contact_Number AS 'Contact Number', "
+                   "CASE WHEN U.Blocked = 1 THEN '✔' ELSE '❌' END AS 'Blocked', "
+                   "U.Password AS 'Password' "
+                   "FROM "
+                   "Users U "
+                   "JOIN "
+                   "Roles R ON U.Role = R.Role_ID;";
         break;
     default:
         throw std::runtime_error("Invalid role");

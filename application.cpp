@@ -237,9 +237,14 @@ void Application::showui() {
     switch (CRUD_Users.getRole()) {
     case Role::Administrator:
         ui->SW_RoleScreenChanger->setCurrentIndex(2);
+        ui->PB_Workers_Screen_Location->show();
+        ui->PB_Workers_Delete->show();
+
         break;
     case Role::Employee:
         ui->SW_RoleScreenChanger->setCurrentIndex(2);
+        ui->PB_Workers_Screen_Location->hide();
+        ui->PB_Workers_Delete->hide();
         break;
     case Role::Bookie:
         ui->SW_RoleScreenChanger->setCurrentIndex(1);
@@ -282,6 +287,101 @@ void Application::selectworkerscreen() {
     }
 }
 
+void Application::handleAddAction() {
+    switch (category) {
+    case Categories::Bookings:
+        ui->SW_Workers_Screen->setCurrentIndex(1);
+        break;
+    case Categories::Hurricanes:
+        ui->SW_Workers_Screen->setCurrentIndex(2);
+        ui->LE_Worker_Hurricane_Name->clear();
+        break;
+    case Categories::Users:
+        ui->SW_Workers_Screen->setCurrentIndex(5);
+        ui->LE_Worker_Users_Address->clear();
+        ui->LE_Worker_Users_CpntactNumber->clear();
+        ui->LE_Worker_Users_FName->clear();
+        ui->LE_Worker_Users_LName->clear();
+        ui->LE_Worker_Users_SSN->clear();
+        ui->LE_Worker_Users_SSN->setDisabled(true);
+        ui->LE_Worker_Users_Password->clear();
+        // ...
+        break;
+    case Categories::Locations:
+        ui->SW_Workers_Screen->setCurrentIndex(3);
+        ui->LE_Workers_Locations_Location->clear();
+        // ...
+        break;
+    case Categories::Shelters:
+        ui->SW_Workers_Screen->setCurrentIndex(4);
+        ui->LE_Workers_Shelters_Latitude->clear();
+        ui->LE_Workers_Shelters_Longitude->clear();
+        break;
+    default:
+        // Handle default category
+        throw std::invalid_argument("Invalid category");
+    }
+}
+
+void Application::handleDeleteAction() {
+    switch (category) {
+    case Categories::Bookings:
+            break;
+    case Categories::Hurricanes:
+        // Handle Add action for Hurricanes
+        // ...
+        break;
+    case Categories::Users:
+        // Handle Add action for Users
+        // ...
+        break;
+    case Categories::Locations:
+        // Handle Add action for Locations
+        // ...
+        break;
+    case Categories::Shelters:
+        // Handle Add action for Shelters
+        // ...
+        break;
+    default:
+        // Handle default category
+        throw std::invalid_argument("Invalid category");
+    }
+}
+
+void Application::handleEditAction() {
+    // get the first row
+
+
+
+
+    switch (category) {
+    case Categories::Bookings:
+        // call the objcet then the function
+            break;
+    case Categories::Hurricanes:
+        // Handle Add action for Hurricanes
+        // ...
+        break;
+    case Categories::Users:
+        // Handle Add action for Users
+        // ...
+        break;
+    case Categories::Locations:
+        // Handle Add action for Locations
+        // ...
+        break;
+    case Categories::Shelters:
+        // Handle Add action for Shelters
+        // ...
+        break;
+    default:
+        // Handle default category
+        throw std::invalid_argument("Invalid category");
+    }
+}
+
+
 void Application::onBookingsButtonClicked() {
     setCategory(Categories::Bookings);
     selectworkerscreen();
@@ -306,3 +406,9 @@ void Application::onSheltersButtonClicked() {
     setCategory(Categories::Shelters);
     selectworkerscreen();
 }
+
+void Application::on_PB_Workers_Add_clicked()
+{
+    handleAddAction();
+}
+

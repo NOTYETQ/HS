@@ -72,8 +72,11 @@ private slots:
     void onLocationsButtonClicked();
     void onSheltersButtonClicked();
 
+    void on_PB_Workers_Add_clicked();
+
 private:
     Ui::Application *ui;
+    QSqlQueryModel *model;
 
     // Initializers for CRUD operations
     DatabaseManager db;
@@ -100,6 +103,10 @@ private:
     int worker_Shelters_RegionId;
     int worker_Bookings_RegionId;
     int worker_Bookings_LocationId;
+
+    void handleEditAction();
+    void handleAddAction();
+    void handleDeleteAction();
 
 };
 

@@ -293,7 +293,7 @@ border-radius: 5px;
         <item>
          <widget class="QStackedWidget" name="SW_RoleScreenChanger">
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="W_EditProfile">
            <layout class="QHBoxLayout" name="horizontalLayout_7">
@@ -855,7 +855,7 @@ border-radius: 5px;
                <item>
                 <widget class="QStackedWidget" name="SW_Workers_Screen">
                  <property name="currentIndex">
-                  <number>1</number>
+                  <number>2</number>
                  </property>
                  <widget class="QWidget" name="W_Workers_Table">
                   <layout class="QVBoxLayout" name="verticalLayout_3">

@@ -12,6 +12,7 @@ public:
     virtual bool edit(const Entity& entity) override;
     virtual bool delete_(const Entity& entity) override;
     virtual bool view(const Entity& entity, Entity& newentity) const override;
+    bool isHurricaneActive(int hurricane_id);
 protected:
     virtual QString getTableName() const override;
     virtual QString buildInsertCommand() const override;
